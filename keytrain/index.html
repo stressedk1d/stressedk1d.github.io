@@ -7,12 +7,15 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <h1 id="headline">Клавиатурный тренажер</h1>
     <div class="game-container">
         <div class="falling-key" id="fallingKey"></div>
         <div class="score">Очки: <span id="score">0</span></div>
         <div class="timer">Осталось времени: <span id="timer">5</span> сек</div>
-    </div><div id="output"></div>
+        <div class="number">Номер клавиши: <span id="number"></span></div>
+        <div id="unused" class="unused"></div>
+    </div>
+    <button id="startGame" type="button" onclick="startGame()">Start</button>
     <script src="script.js"></script>
-    <button onclick="Start()">Старт</button>
 </body>
 </html>

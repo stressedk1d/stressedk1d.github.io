@@ -1,27 +1,28 @@
 body {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    flex-direction: column;
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f0f0f0;
+    background-color: LightCyan;
 }
 
 
 .game-container {
     position: relative;
-    width: 500px;
-    height: 700px;
-    border: 5px solid black;
-    overflow: hidden;
+    width: 400px;
+    height: 500px;
+    border: 5px black solid;
+    overflow: visible;
 }
 
 
 .falling-key {
     position: absolute;
-    width: 75px;
-    height: 75px;
-    background-color: rgba(182, 1, 121, 0.774);
+    width: 50px;
+    height: 50px;
+    background-color: red;
     color: white;
     display: flex;
     justify-content: center;
@@ -30,13 +31,35 @@ body {
 }
 
 
-.score, .timer {
+.score, .timer, .number, .unused {
     position: absolute;
     top: 10px;
     color: black;
+    font-size: 30px;
 }
 
 
 .timer {
-    top: 40px;
+    top: 55px;
+}
+.number{
+    top:100px;
+}
+
+.unused {
+    top: 145px;
+}
+#headline {
+    font-size: 2.5em;
+    margin-top: 20px;
+}
+#startGame {
+    background-color: rgb(132, 0, 255);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 25px;
+    margin: 10px;
+    cursor: pointer;
 }
