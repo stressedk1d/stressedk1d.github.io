@@ -6,7 +6,8 @@
 }
 
 body {
-    background-color: #f7f7f7;
+
+    background-image: url(background.jpg);
     font-family: 'Roboto', sans-serif;
 }
 
@@ -18,6 +19,11 @@ body {
     height: 50px;
     text-align: center;
     padding-top: 18px;
+    font-family:  "Open-Sans", sans-serif;
+}
+a {
+    text-decoration: none;
+    color: #000;
 }
 
 #header #selected {
@@ -89,7 +95,12 @@ body {
     float: right;
     padding: 49px 48px 51px 76px;
     margin-bottom: 100px;
+    font-family: "Open-Sans",sans-serif;
+ 
 }
+
+
+
 
 #content #box_text p {
     color: #242424;
