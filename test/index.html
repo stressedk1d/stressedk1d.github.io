@@ -84,7 +84,8 @@
                     <img src="4.png" alt="Таблица">
                 </div>
                 Дан фрагмент таблицы истинности выражения F, каким выражением
-                может быть F?</td>
+                может быть F?
+            </td>
         </tr>
         <tr>
             <td class="variant">1)a1 → (a2 ∧ a3 ∨ a4 ∧ a5 ∨ a6 ∧ a7)</td>
@@ -158,23 +159,23 @@
     </table>
 
     <table border="0" id="q8" class="table">
-    <tr>
-        <td rowspan="3">8</td>
-        <td colspan="4" class="task">Каково наибольшее целое число Z, при котором ложно высказывание? (8Z - 6 < 75 ) →
-                (Z * (Z - 1)> 65)</75>
-        </td>
-    </tr>
-    <tr>
-        <td class="variant">1)100</td>
-        <td class="variant">2)80</td>
-        <td class="variant">3)9</td>
-        <td class="variant">4)8</td>
-    </tr>
-    <tr>
-        <td colspan="5">
-            <input id="a8" type="text" class="answer" placeholder="Ответ" />
-        </td>
-    </tr>
+        <tr>
+            <td rowspan="3">8</td>
+            <td colspan="4" class="task">Каково наибольшее целое число Z, при котором ложно высказывание? (8Z - 6 < 75 )
+                    → (Z * (Z - 1)> 65)</75>
+            </td>
+        </tr>
+        <tr>
+            <td class="variant">1)100</td>
+            <td class="variant">2)80</td>
+            <td class="variant">3)9</td>
+            <td class="variant">4)8</td>
+        </tr>
+        <tr>
+            <td colspan="5">
+                <input id="a8" type="text" class="answer" placeholder="Ответ" />
+            </td>
+        </tr>
     </table>
 
     <table border="0" id="q9" class="table">
@@ -217,60 +218,14 @@
         </tr>
     </table>
 
-    <script>
-        function Check() {
-            const answers=['4', '2', '2', '4', '4', '2', '2', '4', '3','1'];
-            const useranswers = [
-                document.getElementById('a1').value,
-                document.getElementById('a2').value,
-                document.getElementById('a3').value,
-                document.getElementById('a4').value,
-                document.getElementById('a5').value,
-                document.getElementById('a6').value,
-                document.getElementById('a7').value,
-                document.getElementById('a8').value,
-                document.getElementById('a9').value,
-                document.getElementById('a10').value
-            ];
+    <script src="script.js"></script>
 
-            let correctanswers=0;
-            
-            for (let i = 0; i < answers.length; i++) {
-                if (useranswers[i] === answers[i]) {
-                    document.getElementById(`q${i + 1}`).style.border = '4px solid green';
-                    correctanswers++;
-                }
-                else {
-                    document.getElementById(`q${i + 1}`).style.border = '4px solid red';
-                }
-            }
-            
-
-            if (correctanswers<4)
-            {
-                mark=2;
-            }
-            if (correctanswers<7 && correctanswers>4)
-            {
-                mark=3;
-            }
-            if (correctanswers<10 && correctanswers>7)
-            {
-                mark=4;
-            }
-            if (correctanswers>9)
-            {
-                mark=5;
-            }
-
-
-            document.getElementById('result').innerHTML = `Вы набрали ${correctanswers} из ${answers.length} правильных ответов, ваша оценка: ${mark}`;
-            document.getElementById('result').hidden = false;
-        }
-    </script>
-
-    <button onclick="Check()" class="check">Проверить</button>
-<br />
+<div class="rectangle-buttons">
+        <button onclick="saveResults(prompt('Введите имя для результатов'))" class="save">Сохранить результаты</button>
+        <button onclick="Check()" class="check">Проверить</button>
+        <button onclick="loadResults()" class="load">Загрузить результаты</button>
+</div>
+    <br />
     <p id="result" class="result_" hidden="true"></p>
 </body>
 

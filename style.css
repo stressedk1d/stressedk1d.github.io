@@ -84,9 +84,10 @@ a {
 }
 
 #content img {
-    margin-left: 17px;
+    margin-left: 20px;
     width: 389px;
-    border-radius: 50%;
+    border-radius: 0%;
+
 }
 
 #content #box_text {
@@ -174,7 +175,7 @@ a {
     background-color: #5ba1d3;
 }
 
-#footer { /* # == id */
+#footer {
     background-color: #434445;
     width: 100%;
     float: left;
@@ -188,4 +189,29 @@ a {
 
 #footer a {
     color: inherit;
+}
+
+
+.light-theme {
+    background-color: #f0f0f0;
+    color: #333;
+  }
+  
+  .dark-theme {
+    background-color: #333;
+    color: #fff;
+  }
+
+  #theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+
+#theme-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
 }

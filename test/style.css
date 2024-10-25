@@ -59,20 +59,6 @@ html {
     margin-top: 20px;
   }
 
-  .check
-  {
-    background-color: blue;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 25px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            display: flex;
-    margin: 0 auto;
-
-  }
   .check:hover {
     background-color: lightblue;
   }
@@ -98,4 +84,66 @@ html {
     display: flex;
     justify-content: center;
 
+}
+
+.save{
+  background-color: blue;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  margin: 0 auto;;
+
+}
+
+.load{
+  background-color: blue;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  margin: 0 auto;
+}
+
+.check
+{
+  background-color: blue;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  margin: 0 auto;
+}
+
+.check:hover {
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.5)
+}
+
+.save:hover {
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.5)
+}
+
+.load:hover {
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.5)
+}
+
+.rectangle-buttons
+{
+  display: flex;
+  justify-content: space-between;
 }

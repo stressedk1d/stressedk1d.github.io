@@ -21,16 +21,31 @@
             <span>/</span>
 
             <a href="keytrain/">Клавиатурный тренажер</a>
+            
+            <button id="theme-toggle">
+                <img src="light-bulb.png" alt="Переключить тему" id="theme-icon">
+            </button>
+        
+            <script>
+                const themeToggle = document.getElementById('theme-toggle');
+                const body = document.body;
+                const themeIcon = document.getElementById('theme-icon');
+        
+                themeToggle.addEventListener('click', () => {
+                    body.classList.toggle('dark-theme');   
+        
+                    themeIcon.src = body.classList.contains('dark-theme') ? 'dark-bulb.png' : 'light-bulb.png';
+                });
+            </script>
         </div>
 
         
         <div id="logo" style="display: flex;">
-            <img style="width: 300px;height: 300px;" src="img/logo.png" alt="Логотип">
             <h1>Личный сайт студента МГИМО</h1>
         </div>
         <div id="center">
             <img  src="img/photo.png" alt="фотография">
-                
+            
             <div id="box_text">
                 <p>
                     Добрый день. Меня зовут <b>Громов Игорь</b>.
