@@ -1,4 +1,4 @@
-const CACHE = "0bsession-v8";
+const CACHE = "0bsession-v9";
 const STALE_ASSETS = ["/images/background.jpg"];
 const ASSETS = [
   "/",

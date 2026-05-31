@@ -1,8 +1,8 @@
 window.I18N = {
   ru: {
-    metaDescription: "0bsession — начинающий full-stack web-разработчик",
-    ogDescription: "Начинающий full-stack web-разработчик",
-    bio: "Начинающий full-stack web-разработчик",
+    metaDescription: "0bsession — full-stack разработчик, открыт к предложениям",
+    ogDescription: "Full-stack разработчик · открыт к стажировке и junior-позициям",
+    bio: "Начинающий full-stack web-разработчик · открыт к предложениям",
     navAbout: "Обо мне",
     navSkills: "Навыки",
     navLinks: "Ссылки",
@@ -36,8 +36,13 @@ window.I18N = {
     aboutTitle: "Обо мне",
     skillsTitle: "Навыки подробнее",
     rolesTitle: "Роль в проектах",
-    aboutText:
-      "Учусь full-stack разработке: от вёрстки и фронтенда до бэкенда и баз данных. Сейчас работаю над дипломным проектом Vogue Way — маркетплейсом модной одежды.",
+    aboutText1:
+      "Я начинающий full-stack разработчик. Делаю проекты от интерфейса до API и баз данных — сейчас в фокусе дипломный маркетплейс Vogue Way с AI-поиском, корзиной и заказами.",
+    aboutText2:
+      "Ищу стажировку или junior-позицию: frontend, backend или full-stack. Готов учиться, брать задачи и быстро вливаться в команду.",
+    aboutText3:
+      "Открыт к удалёнке и офису. Если ищете мотивированного разработчика — напишите в Telegram или на почту.",
+    statusOpen: "Открыт к предложениям",
     quote: "И больно думать, едет крыша. Я кричу, но ты не слышишь.",
     githubDesc: "github.com/stressedk1d",
     telegramDesc: "@phaqueu3",
@@ -87,9 +92,9 @@ window.I18N = {
     panoramaFeature3: "Современный тёмный UI",
   },
   en: {
-    metaDescription: "0bsession — aspiring full-stack web developer",
-    ogDescription: "Aspiring full-stack web developer",
-    bio: "Aspiring full-stack web developer",
+    metaDescription: "0bsession — full-stack developer, open to opportunities",
+    ogDescription: "Full-stack developer · open to internships and junior roles",
+    bio: "Aspiring full-stack web developer · open to opportunities",
     navAbout: "About",
     navSkills: "Skills",
     navLinks: "Links",
@@ -123,8 +128,13 @@ window.I18N = {
     aboutTitle: "About me",
     skillsTitle: "Skills in detail",
     rolesTitle: "Project roles",
-    aboutText:
-      "Learning full-stack development — from layout and frontend to backend and databases. Currently building Vogue Way, a fashion marketplace thesis project.",
+    aboutText1:
+      "I'm an aspiring full-stack developer building projects from UI to API and databases — currently focused on Vogue Way, a fashion marketplace thesis with AI search, cart, and checkout.",
+    aboutText2:
+      "Looking for an internship or junior role: frontend, backend, or full-stack. Eager to learn, take ownership, and integrate into a team quickly.",
+    aboutText3:
+      "Open to remote and on-site. If you're looking for a motivated developer — reach out via Telegram or email.",
+    statusOpen: "Open to opportunities",
     quote: "It hurts to think, the roof is caving in. I scream, but you don't hear.",
     githubDesc: "github.com/stressedk1d",
     telegramDesc: "@phaqueu3",

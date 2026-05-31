@@ -330,6 +330,44 @@ html.js .reveal.is-visible {
   max-width: 380px;
 }
 
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.15rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #86efac;
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  background: rgba(34, 197, 94, 0.1);
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.12);
+}
+
+.status-badge__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 10px #22c55e;
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.65; transform: scale(0.92); }
+}
+
+.about-card p + p {
+  margin-top: 0.85rem;
+}
+
+.about-card p {
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
 .hero-cta {
   display: flex;
   flex-wrap: wrap;
@@ -456,6 +494,31 @@ html.js .reveal.is-visible {
   font-size: 0.9rem;
   font-weight: 600;
   margin-bottom: 0.85rem;
+}
+
+.stack-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  list-style: none;
+  margin-bottom: 1rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.stack-icons img {
+  display: block;
+  width: 1.65rem;
+  height: 1.65rem;
+  opacity: 0.9;
+  transition: transform 0.2s, opacity 0.2s, filter 0.2s;
+  filter: brightness(0) invert(1) opacity(0.82);
+}
+
+.stack-icons li:hover img {
+  transform: translateY(-2px) scale(1.12);
+  opacity: 1;
+  filter: brightness(0) invert(1) sepia(1) saturate(4) hue-rotate(230deg);
 }
 
 .skill-bars {
@@ -929,6 +992,7 @@ html.js .bar__fill.is-animated {
   .background::after { animation: none; }
   .side-nav__link:hover,
   .side-nav__link.is-active { transform: none; }
+  .status-badge__dot { animation: none; }
 }
 
 @media (pointer: coarse) {

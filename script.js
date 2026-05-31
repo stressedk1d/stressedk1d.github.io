@@ -70,12 +70,17 @@ function initEmail() {
 }
 
 function initDemo() {
-  const demoUrl = config.projects?.marketplace?.demoUrl;
-  const demoBtn = document.getElementById("marketplace-demo");
-  if (!demoUrl || !demoBtn) return;
+  const demos = [
+    ["marketplace-demo", config.projects?.marketplace?.demoUrl],
+    ["panorama-demo", config.projects?.panorama?.demoUrl],
+  ];
 
-  demoBtn.href = demoUrl;
-  demoBtn.classList.remove("hidden");
+  demos.forEach(([id, url]) => {
+    const btn = document.getElementById(id);
+    if (!btn || !url) return;
+    btn.href = url;
+    btn.classList.remove("hidden");
+  });
 }
 
 function scrollToSection(link) {

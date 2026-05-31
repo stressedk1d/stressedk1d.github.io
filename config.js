@@ -6,5 +6,8 @@ window.SITE_CONFIG = {
     marketplace: {
       demoUrl: "https://vogueway.ru/",
     },
+    panorama: {
+      demoUrl: "",
+    },
   },
 };
