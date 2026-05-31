@@ -9,9 +9,9 @@ window.SITE_CONFIG = {
   cvUrl: "cv.html",
   formspreeId: "",
   nowPlaying: {
-    title: "И больно думать, едет крыша",
-    artist: "0bsession mood",
-    url: "",
+    title: "Заболел",
+    artist: "БРЕДИШЬ",
+    url: "https://open.spotify.com/track/6hyVgzsyH5idE8a4KxwZW5",
   },
   projects: {
     marketplace: {
