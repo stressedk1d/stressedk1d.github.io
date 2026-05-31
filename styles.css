@@ -62,18 +62,47 @@ body.page-load { animation: pageIn 0.5s ease-out; }
   position: fixed;
   inset: 0;
   z-index: -1;
-  background-color: var(--bg);
-  background-image:
-    linear-gradient(
-      180deg,
-      rgba(5, 5, 8, 0.4) 0%,
-      rgba(5, 5, 8, 0.15) 40%,
-      rgba(5, 5, 8, 0.5) 100%
-    ),
-    url("images/background.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.background::before,
+.background::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.background::before {
+  width: min(900px, 90vw);
+  height: min(520px, 55vh);
+  top: -18%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse, rgba(124, 58, 237, 0.42) 0%, transparent 70%);
+  animation: bgGlowTop 14s ease-in-out infinite alternate;
+}
+
+.background::after {
+  width: min(640px, 70vw);
+  height: min(420px, 45vh);
+  bottom: -12%;
+  right: -8%;
+  background: radial-gradient(ellipse, rgba(34, 211, 238, 0.22) 0%, transparent 72%);
+  animation: bgGlowBottom 18s ease-in-out infinite alternate;
+}
+
+@keyframes bgGlowTop {
+  0% { transform: translateX(-50%) translateY(0) scale(1); opacity: 0.75; }
+  100% { transform: translateX(-48%) translateY(4%) scale(1.08); opacity: 1; }
+}
+
+@keyframes bgGlowBottom {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.65; }
+  100% { transform: translate(-4%, -3%) scale(1.1); opacity: 0.95; }
 }
 
 .cursor-glow {
@@ -893,6 +922,8 @@ html.js .bar__fill.is-animated {
   body.page-load { animation: none; }
   .project-thumb img { transition: none; }
   .cursor-glow, #particles { display: none; }
+  .background::before,
+  .background::after { animation: none; }
 }
 
 @media (pointer: coarse) {

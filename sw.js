@@ -1,4 +1,4 @@
-const CACHE = "0bsession-v5";
+const CACHE = "0bsession-v6";
 const ASSETS = [
   "/",
   "/index.html",
@@ -9,7 +9,6 @@ const ASSETS = [
   "/favicon.svg",
   "/manifest.json",
   "/og-image.png",
-  "/images/background.jpg",
   "/projects/vogue-way.html",
   "/projects/panorama.html",
 ];
