@@ -13,8 +13,10 @@ on:
       - "manifest.json"
       - "favicon.svg"
       - "og-image.png"
+      - "CNAME"
       - "images/**"
       - "icons/**"
+      - "projects/**"
       - ".github/workflows/deploy-site.yml"
   workflow_dispatch:
 
@@ -39,8 +41,8 @@ jobs:
       - name: Prepare site bundle
         run: |
           mkdir site-dist
-          cp index.html styles.css script.js config.js i18n.js sw.js manifest.json favicon.svg og-image.png site-dist/
-          cp -r images icons site-dist/
+          cp index.html styles.css script.js config.js i18n.js sw.js manifest.json favicon.svg og-image.png CNAME site-dist/
+          cp -r images icons projects site-dist/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

@@ -1,10 +1,7 @@
-const themeToggle = document.querySelector(".theme-toggle");
 const langToggle = document.querySelector(".lang-toggle");
-const installBtn = document.querySelector(".install-btn");
 const cursorGlow = document.querySelector(".cursor-glow");
 const particlesCanvas = document.getElementById("particles");
 const config = window.SITE_CONFIG || {};
-let deferredPrompt = null;
 
 function getLang() {
   return localStorage.getItem("lang") || "ru";
@@ -38,24 +35,6 @@ function applyTranslations(lang) {
   if (langToggle) langToggle.textContent = strings.langToggle;
 }
 
-function initTheme() {
-  const savedTheme = localStorage.getItem("theme");
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-  if (savedTheme) {
-    document.documentElement.setAttribute("data-theme", savedTheme);
-  } else if (!prefersDark) {
-    document.documentElement.setAttribute("data-theme", "light");
-  }
-}
-
-themeToggle?.addEventListener("click", () => {
-  const current = document.documentElement.getAttribute("data-theme");
-  const next = current === "light" ? "dark" : "light";
-  document.documentElement.setAttribute("data-theme", next);
-  localStorage.setItem("theme", next);
-});
-
 langToggle?.addEventListener("click", () => {
   setLang(getLang() === "ru" ? "en" : "ru");
 });
@@ -74,12 +53,44 @@ function initEmail() {
 function initDemo() {
   const demoUrl = config.projects?.marketplace?.demoUrl;
   const demoBtn = document.getElementById("marketplace-demo");
-  const soonBtn = document.getElementById("marketplace-soon");
   if (!demoUrl || !demoBtn) return;
 
   demoBtn.href = demoUrl;
   demoBtn.classList.remove("hidden");
-  soonBtn?.classList.add("hidden");
+}
+
+function initNav() {
+  const nav = document.querySelector(".site-nav");
+  if (!nav) return;
+
+  const links = [...nav.querySelectorAll(".site-nav__link")];
+  const sections = links
+    .map((link) => document.querySelector(link.getAttribute("href")))
+    .filter(Boolean);
+
+  links.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const target = document.querySelector(link.getAttribute("href"));
+      if (!target) return;
+      event.preventDefault();
+      target.scrollIntoView({ behavior: "smooth" });
+    });
+  });
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const id = `#${entry.target.id}`;
+        links.forEach((link) => {
+          link.classList.toggle("is-active", link.getAttribute("href") === id);
+        });
+      });
+    },
+    { rootMargin: "-40% 0px -50% 0px", threshold: 0 }
+  );
+
+  sections.forEach((section) => observer.observe(section));
 }
 
 function initAnalytics() {
@@ -103,23 +114,10 @@ function initAnalytics() {
 }
 
 function initPWA() {
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("/sw.js").catch(() => {});
-  }
+  if (!("serviceWorker" in navigator)) return;
 
-  window.addEventListener("beforeinstallprompt", (event) => {
-    event.preventDefault();
-    deferredPrompt = event;
-    installBtn?.classList.remove("hidden");
-  });
-
-  installBtn?.addEventListener("click", async () => {
-    if (!deferredPrompt) return;
-    deferredPrompt.prompt();
-    await deferredPrompt.userChoice;
-    deferredPrompt = null;
-    installBtn.classList.add("hidden");
-  });
+  const swPath = document.body.classList.contains("project-page") ? "../sw.js" : "/sw.js";
+  navigator.serviceWorker.register(swPath).catch(() => {});
 }
 
 function initCursor() {
@@ -153,7 +151,7 @@ function initParticles() {
   let width = 0;
   let height = 0;
   let particles = [];
-  const count = window.innerWidth < 768 ? 30 : 50;
+  const count = window.innerWidth < 768 ? 35 : 55;
 
   function resize() {
     width = particlesCanvas.width = window.innerWidth;
@@ -164,13 +162,12 @@ function initParticles() {
       r: Math.random() * 1.5 + 0.5,
       vx: (Math.random() - 0.5) * 0.3,
       vy: (Math.random() - 0.5) * 0.3,
-      a: Math.random() * 0.4 + 0.1,
+      a: Math.random() * 0.5 + 0.1,
     }));
   }
 
   function draw() {
     ctx.clearRect(0, 0, width, height);
-    const accent = getComputedStyle(document.documentElement).getPropertyValue("--accent-light").trim() || "#a855f7";
 
     particles.forEach((p) => {
       p.x += p.vx;
@@ -182,7 +179,7 @@ function initParticles() {
 
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = accent;
+      ctx.fillStyle = Math.random() > 0.7 ? "#22d3ee" : "#c084fc";
       ctx.globalAlpha = p.a;
       ctx.fill();
     });
@@ -196,10 +193,10 @@ function initParticles() {
   window.addEventListener("resize", resize, { passive: true });
 }
 
-initTheme();
 setLang(getLang());
 initEmail();
 initDemo();
+initNav();
 initAnalytics();
 initPWA();
 initCursor();

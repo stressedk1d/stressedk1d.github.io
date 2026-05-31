@@ -1,4 +1,4 @@
-const CACHE = "0bsession-v1";
+const CACHE = "0bsession-v2";
 const ASSETS = [
   "/",
   "/index.html",
@@ -8,6 +8,9 @@ const ASSETS = [
   "/i18n.js",
   "/favicon.svg",
   "/manifest.json",
+  "/og-image.png",
+  "/projects/vogue-way.html",
+  "/projects/panorama.html",
 ];
 
 self.addEventListener("install", (event) => {
