@@ -18,12 +18,12 @@
     <a class="back-link" href="../index.html" data-i18n="backHome">← На главную</a>
 
     <header class="project-hero reveal is-visible">
-      <a class="project-hero__thumb thumb-zoom" href="https://vogueway.ru/" target="_blank" rel="noopener noreferrer">
+      <button class="project-hero__thumb lightbox-trigger thumb-zoom" type="button" data-src="../images/marketplace.png" data-alt="Vogue Way">
         <div class="img-skeleton is-loaded">
           <img src="../images/marketplace.png" alt="Vogue Way">
         </div>
-        <span class="thumb-overlay"><span data-i18n="viewProject">Смотреть проект</span> →</span>
-      </a>
+        <span class="thumb-overlay"><span data-i18n="zoomImage">Увеличить</span> 🔍</span>
+      </button>
       <div class="project-hero__info">
         <span class="status status--thesis" data-i18n="statusThesis">Диплом</span>
         <h1 class="name neon-text">Vogue Way</h1>
@@ -59,11 +59,22 @@
         <li data-i18n="vogueFeature4">Авторизация и личный кабинет</li>
       </ul>
     </section>
+
+    <nav class="project-nav">
+      <span></span>
+      <a href="panorama.html" data-i18n="nextProject">Panorama →</a>
+    </nav>
   </main>
 
   <div class="fab-group">
     <button class="fab lang-toggle" type="button">EN</button>
   </div>
+
+  <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true">
+    <button class="lightbox__close" type="button" aria-label="Закрыть">×</button>
+    <img class="lightbox__img" src="" alt="">
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="../config.js"></script>
   <script src="../i18n.js"></script>

@@ -41,6 +41,15 @@ langToggle?.addEventListener("click", () => {
   setLang(getLang() === "ru" ? "en" : "ru");
 });
 
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  if (!toast) return;
+  toast.textContent = message;
+  toast.classList.add("is-visible");
+  clearTimeout(showToast.timer);
+  showToast.timer = setTimeout(() => toast.classList.remove("is-visible"), 2600);
+}
+
 function initEmail() {
   const email = config.email;
   const link = document.getElementById("email-link");
@@ -50,6 +59,14 @@ function initEmail() {
   link.href = `mailto:${email}`;
   link.classList.remove("hidden");
   if (desc) desc.textContent = email;
+
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+    navigator.clipboard.writeText(email).then(() => {
+      const msg = window.I18N[getLang()]?.emailCopied || "Email copied";
+      showToast(msg);
+    });
+  });
 }
 
 function initDemo() {
@@ -81,6 +98,7 @@ function initNav() {
   const navLinks = [
     ...document.querySelectorAll(".site-nav__link"),
     ...document.querySelectorAll(".mobile-menu__link"),
+    ...document.querySelectorAll(".bottom-nav__link"),
     ...document.querySelectorAll('.hero-cta a[href^="#"]'),
   ];
 
@@ -205,7 +223,7 @@ function initBackToTop() {
 function initPageTransition() {
   document.querySelectorAll('a[href*="projects/"]').forEach((link) => {
     link.addEventListener("click", (event) => {
-      if (link.target === "_blank") return;
+      if (link.target === "_blank" || link.classList.contains("lightbox-trigger")) return;
       event.preventDefault();
       document.body.style.opacity = "0";
       document.body.style.transition = "opacity 0.2s ease";
@@ -214,6 +232,85 @@ function initPageTransition() {
       }, 180);
     });
   });
+}
+
+function initScrollProgress() {
+  const bar = document.querySelector(".scroll-progress");
+  if (!bar) return;
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+      bar.style.width = `${pct}%`;
+    },
+    { passive: true }
+  );
+}
+
+function initLightbox() {
+  const lightbox = document.getElementById("lightbox");
+  const img = lightbox?.querySelector(".lightbox__img");
+  const closeBtn = lightbox?.querySelector(".lightbox__close");
+  if (!lightbox || !img) return;
+
+  const open = (src, alt) => {
+    img.src = src;
+    img.alt = alt || "";
+    lightbox.hidden = false;
+    document.body.style.overflow = "hidden";
+    closeBtn?.focus();
+  };
+
+  const close = () => {
+    lightbox.hidden = true;
+    img.src = "";
+    document.body.style.overflow = "";
+  };
+
+  document.querySelectorAll(".lightbox-trigger").forEach((btn) => {
+    btn.addEventListener("click", () => open(btn.dataset.src, btn.dataset.alt));
+  });
+
+  closeBtn?.addEventListener("click", close);
+  lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) close();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !lightbox.hidden) close();
+  });
+}
+
+function initTilt() {
+  if (window.matchMedia("(pointer: coarse)").matches) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  document.querySelectorAll(".tilt-card").forEach((card) => {
+    card.addEventListener("mousemove", (event) => {
+      const rect = card.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+      card.style.transform = `perspective(800px) rotateX(${y * -4}deg) rotateY(${x * 4}deg) translateY(-2px)`;
+    });
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "";
+    });
+  });
+}
+
+function initSplash() {
+  const splash = document.getElementById("splash");
+  if (!splash) return;
+  if (localStorage.getItem("visited")) {
+    splash.remove();
+    return;
+  }
+  localStorage.setItem("visited", "1");
+  setTimeout(() => {
+    splash.classList.add("is-hidden");
+    setTimeout(() => splash.remove(), 500);
+  }, 1200);
 }
 
 function initAnalytics() {
@@ -322,6 +419,10 @@ initSkillBars();
 initImages();
 initBackToTop();
 initPageTransition();
+initScrollProgress();
+initLightbox();
+initTilt();
+initSplash();
 initAnalytics();
 initPWA();
 initCursor();

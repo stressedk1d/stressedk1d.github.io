@@ -22,6 +22,11 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="page-load">
+  <a class="skip-link" href="#main" data-i18n="skipLink">Перейти к контенту</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <div class="splash" id="splash" aria-hidden="true">
+    <span class="splash__logo neon-text neon-pulse">0bsession</span>
+  </div>
   <canvas id="particles" aria-hidden="true"></canvas>
   <div class="cursor-glow" aria-hidden="true"></div>
   <div class="background"></div>
@@ -48,12 +53,12 @@
     </nav>
   </div>
 
-  <main class="page">
+  <main class="page" id="main">
     <section class="hero reveal" id="top">
       <div class="avatar neon-ring">
         <img src="https://avatars.githubusercontent.com/u/181460099?v=4" alt="0bsession">
       </div>
-      <h1 class="name neon-text">0bsession</h1>
+      <h1 class="name neon-text neon-pulse">0bsession</h1>
       <p class="bio" data-i18n="bio">Начинающий full-stack web-разработчик</p>
 
       <div class="hero-cta">
@@ -74,35 +79,53 @@
       </div>
     </section>
 
+    <section class="section reveal" id="timeline">
+      <h2 class="section-title" data-i18n="timelineTitle">Путь</h2>
+      <ol class="timeline card glass">
+        <li><span class="timeline__year">2024</span><span data-i18n="timeline1">Начал изучать web-разработку</span></li>
+        <li><span class="timeline__year">2025</span><span data-i18n="timeline2">Первые проекты и практика</span></li>
+        <li><span class="timeline__year">2026</span><span data-i18n="timeline3">Дипломный проект Vogue Way</span></li>
+      </ol>
+    </section>
+
     <section class="section reveal" id="skills">
       <h2 class="section-title" data-i18n="skillsTitle">Навыки подробнее</h2>
       <div class="skills-grid">
         <div class="card glass">
           <h3 class="skills-group__title" data-i18n="skillFrontend">Frontend</h3>
           <ul class="skill-bars">
-            <li><span>HTML / CSS</span><div class="bar"><div class="bar__fill" data-width="90"></div></div></li>
-            <li><span>JavaScript</span><div class="bar"><div class="bar__fill" data-width="85"></div></div></li>
-            <li><span>TypeScript</span><div class="bar"><div class="bar__fill" data-width="80"></div></div></li>
-            <li><span>Next.js / React</span><div class="bar"><div class="bar__fill" data-width="75"></div></div></li>
+            <li><span>HTML / CSS</span><div class="bar-row"><div class="bar"><div class="bar__fill" data-width="90"></div></div><span class="bar__pct">90%</span></div></li>
+            <li><span>JavaScript</span><div class="bar-row"><div class="bar"><div class="bar__fill" data-width="85"></div></div><span class="bar__pct">85%</span></div></li>
+            <li><span>TypeScript</span><div class="bar-row"><div class="bar"><div class="bar__fill" data-width="80"></div></div><span class="bar__pct">80%</span></div></li>
+            <li><span>Next.js / React</span><div class="bar-row"><div class="bar"><div class="bar__fill" data-width="75"></div></div><span class="bar__pct">75%</span></div></li>
           </ul>
         </div>
         <div class="card glass">
           <h3 class="skills-group__title" data-i18n="skillBackend">Backend</h3>
           <ul class="skill-bars">
-            <li><span>Python</span><div class="bar"><div class="bar__fill" data-width="80"></div></div></li>
-            <li><span>REST API</span><div class="bar"><div class="bar__fill" data-width="78"></div></div></li>
-            <li><span>PostgreSQL</span><div class="bar"><div class="bar__fill" data-width="65"></div></div></li>
+            <li><span>Python</span><div class="bar-row"><div class="bar"><div class="bar__fill" data-width="80"></div></div><span class="bar__pct">80%</span></div></li>
+            <li><span>REST API</span><div class="bar-row"><div class="bar"><div class="bar__fill" data-width="78"></div></div><span class="bar__pct">78%</span></div></li>
+            <li><span>PostgreSQL</span><div class="bar-row"><div class="bar"><div class="bar__fill" data-width="65"></div></div><span class="bar__pct">65%</span></div></li>
           </ul>
         </div>
         <div class="card glass">
           <h3 class="skills-group__title" data-i18n="skillTools">Инструменты</h3>
           <ul class="skill-bars">
-            <li><span>Git / GitHub</span><div class="bar"><div class="bar__fill" data-width="85"></div></div></li>
-            <li><span>Docker</span><div class="bar"><div class="bar__fill" data-width="70"></div></div></li>
-            <li><span>Figma</span><div class="bar"><div class="bar__fill" data-width="60"></div></div></li>
+            <li><span>Git / GitHub</span><div class="bar-row"><div class="bar"><div class="bar__fill" data-width="85"></div></div><span class="bar__pct">85%</span></div></li>
+            <li><span>Docker</span><div class="bar-row"><div class="bar"><div class="bar__fill" data-width="70"></div></div><span class="bar__pct">70%</span></div></li>
+            <li><span>Figma</span><div class="bar-row"><div class="bar"><div class="bar__fill" data-width="60"></div></div><span class="bar__pct">60%</span></div></li>
           </ul>
         </div>
       </div>
+    </section>
+
+    <section class="section reveal" id="learning">
+      <h2 class="section-title" data-i18n="learningTitle">Сейчас изучаю</h2>
+      <ul class="learning-tags card glass">
+        <li data-i18n="learning1">React Patterns</li>
+        <li data-i18n="learning2">System Design</li>
+        <li data-i18n="learning3">UI/UX практики</li>
+      </ul>
     </section>
 
     <section class="section reveal" id="links">
@@ -129,13 +152,15 @@
     <section class="section section--featured reveal" id="projects">
       <h2 class="section-title section-title--lg" data-i18n="projectsTitle">Проекты</h2>
       <div class="projects">
-        <article class="project-card glass reveal">
-          <a class="project-thumb thumb-zoom" href="projects/vogue-way.html">
-            <div class="img-skeleton">
-              <img src="images/marketplace.png" alt="Vogue Way" loading="lazy">
-            </div>
-            <span class="thumb-overlay"><span data-i18n="viewProject">Смотреть проект</span> →</span>
-          </a>
+        <article class="project-card glass reveal tilt-card project-card--featured">
+          <div class="project-thumb">
+            <button class="lightbox-trigger thumb-zoom" type="button" data-src="images/marketplace.png" data-alt="Vogue Way">
+              <div class="img-skeleton">
+                <img src="images/marketplace.png" alt="Vogue Way" loading="lazy">
+              </div>
+              <span class="thumb-overlay"><span data-i18n="zoomImage">Увеличить</span> 🔍</span>
+            </button>
+          </div>
           <div class="project-body">
             <div class="project-header">
               <div>
@@ -154,13 +179,15 @@
           </div>
         </article>
 
-        <article class="project-card glass reveal">
-          <a class="project-thumb thumb-zoom" href="projects/panorama.html">
-            <div class="img-skeleton">
-              <img src="images/panorama.png" alt="Panorama" loading="lazy">
-            </div>
-            <span class="thumb-overlay"><span data-i18n="viewProject">Смотреть проект</span> →</span>
-          </a>
+        <article class="project-card glass reveal tilt-card">
+          <div class="project-thumb">
+            <button class="lightbox-trigger thumb-zoom" type="button" data-src="images/panorama.png" data-alt="Panorama">
+              <div class="img-skeleton">
+                <img src="images/panorama.png" alt="Panorama" loading="lazy">
+              </div>
+              <span class="thumb-overlay"><span data-i18n="zoomImage">Увеличить</span> 🔍</span>
+            </button>
+          </div>
           <div class="project-body">
             <div class="project-header">
               <div>
@@ -185,10 +212,23 @@
     </footer>
   </main>
 
+  <nav class="bottom-nav" aria-label="Быстрая навигация">
+    <a class="bottom-nav__link" href="#top" data-i18n="navHome">Главная</a>
+    <a class="bottom-nav__link" href="#projects" data-i18n="navProjects">Проекты</a>
+    <a class="bottom-nav__link" href="https://t.me/phaqueu3" target="_blank" rel="noopener noreferrer" data-i18n="navContact">Контакт</a>
+  </nav>
+
   <div class="fab-group">
     <button class="fab back-to-top hidden" type="button" aria-label="Наверх" data-i18n-aria="backToTop">↑</button>
-    <button class="fab lang-toggle" type="button" data-i18n="langToggle">EN</button>
+    <button class="fab lang-toggle" type="button">EN</button>
   </div>
+
+  <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Просмотр изображения">
+    <button class="lightbox__close" type="button" aria-label="Закрыть">×</button>
+    <img class="lightbox__img" src="" alt="">
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="config.js"></script>
   <script src="i18n.js"></script>
