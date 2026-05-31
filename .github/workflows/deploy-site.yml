@@ -13,7 +13,6 @@ on:
       - "manifest.json"
       - "favicon.svg"
       - "og-image.png"
-      - "CNAME"
       - "images/**"
       - "icons/**"
       - "404.html"
@@ -42,7 +41,7 @@ jobs:
       - name: Prepare site bundle
         run: |
           mkdir site-dist
-          cp index.html styles.css script.js config.js i18n.js sw.js manifest.json favicon.svg og-image.png CNAME 404.html site-dist/
+          cp index.html styles.css script.js config.js i18n.js sw.js manifest.json favicon.svg og-image.png 404.html site-dist/
           cp -r images icons projects site-dist/
 
       - name: Setup Pages
