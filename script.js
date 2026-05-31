@@ -96,7 +96,7 @@ function closeMobileMenu() {
 
 function initNav() {
   const navLinks = [
-    ...document.querySelectorAll(".site-nav__link"),
+    ...document.querySelectorAll(".side-nav__link"),
     ...document.querySelectorAll(".mobile-menu__link"),
     ...document.querySelectorAll(".bottom-nav__link"),
     ...document.querySelectorAll('.hero-cta a[href^="#"]'),
@@ -117,7 +117,7 @@ function initNav() {
     });
   });
 
-  const desktopLinks = [...document.querySelectorAll(".site-nav__link")];
+  const desktopLinks = [...document.querySelectorAll(".side-nav__link")];
 
   const observer = new IntersectionObserver(
     (entries) => {

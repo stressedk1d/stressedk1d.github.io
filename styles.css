@@ -92,11 +92,14 @@ body.page-load { animation: pageIn 0.5s ease-out; }
   height: var(--header-height);
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 0 1.25rem;
   background: rgba(5, 5, 8, 0.8);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
+}
+
+.site-header .menu-toggle {
+  margin-left: auto;
 }
 
 .site-logo {
@@ -108,25 +111,39 @@ body.page-load { animation: pageIn 0.5s ease-out; }
   letter-spacing: -0.02em;
 }
 
-.site-nav {
+.side-nav {
   display: none;
-  gap: 0.15rem;
+  position: fixed;
+  left: max(1rem, calc(50% - var(--max-width) / 2 - 9rem));
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.65rem;
+  background: rgba(5, 5, 8, 0.82);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 
-.site-nav__link {
-  padding: 0.4rem 0.7rem;
-  border-radius: 999px;
-  font-size: 0.78rem;
+.side-nav__link {
+  padding: 0.55rem 0.9rem;
+  border-radius: 10px;
+  font-size: 0.8rem;
   font-weight: 500;
   color: var(--text-muted);
   text-decoration: none;
-  transition: color 0.2s, background 0.2s;
+  white-space: nowrap;
+  transition: color 0.2s, background 0.2s, box-shadow 0.2s;
 }
 
-.site-nav__link:hover,
-.site-nav__link.is-active {
+.side-nav__link:hover,
+.side-nav__link.is-active {
   color: var(--accent-light);
-  background: rgba(124, 58, 237, 0.12);
+  background: rgba(124, 58, 237, 0.14);
+  box-shadow: 0 0 16px rgba(124, 58, 237, 0.15);
 }
 
 .menu-toggle {
@@ -827,11 +844,24 @@ html.js .bar__fill.is-animated {
 
 .project-page .site-header { display: none; }
 
-@media (min-width: 768px) {
-  .site-nav { display: flex; }
+@media (min-width: 1024px) {
+  .side-nav { display: flex; }
   .menu-toggle { display: none; }
   .mobile-menu { display: none !important; }
+  .bottom-nav { display: none !important; }
 
+  .page { padding-bottom: 3rem; }
+
+  .project-hero {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .project-hero__thumb { flex: 1.2; }
+  .project-hero__info { flex: 1; }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
   .project-hero {
     flex-direction: row;
     align-items: flex-start;

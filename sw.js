@@ -1,4 +1,4 @@
-const CACHE = "0bsession-v3";
+const CACHE = "0bsession-v4";
 const ASSETS = [
   "/",
   "/index.html",
