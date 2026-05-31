@@ -174,22 +174,31 @@ function initSkillBars() {
   const fills = document.querySelectorAll(".bar__fill");
   if (!fills.length) return;
 
-  fills.forEach((fill) => {
-    fill.style.setProperty("--w", fill.dataset.width);
-  });
+  const animate = (fill) => {
+    if (fill.classList.contains("is-animated")) return;
+    fill.style.setProperty("--w", `${fill.dataset.width}%`);
+    fill.classList.add("is-animated");
+  };
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-animated");
+        animate(entry.target);
         observer.unobserve(entry.target);
       });
     },
-    { threshold: 0.5 }
+    { threshold: 0.1 }
   );
 
-  fills.forEach((fill) => observer.observe(fill));
+  fills.forEach((fill) => {
+    const rect = fill.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      animate(fill);
+    } else {
+      observer.observe(fill);
+    }
+  });
 }
 
 function initImages() {

@@ -429,10 +429,13 @@ html.js .reveal.is-visible {
   width: 0;
   border-radius: 999px;
   background: linear-gradient(90deg, var(--accent), var(--accent-cyan));
+  box-shadow: 0 0 8px rgba(124, 58, 237, 0.4);
   transition: width 1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.bar__fill.is-animated { width: calc(var(--w) * 1%); }
+.bar__fill.is-animated {
+  width: var(--w);
+}
 
 .links {
   display: flex;
@@ -843,7 +846,7 @@ html.js .reveal.is-visible {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
-  .bar__fill { width: calc(var(--w) * 1%) !important; transition: none; }
+  .bar__fill.is-animated { width: var(--w) !important; transition: none; }
   body.page-load { animation: none; }
   .project-thumb img { transition: none; }
   .cursor-glow, #particles { display: none; }
