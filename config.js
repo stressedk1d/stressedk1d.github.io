@@ -7,7 +7,7 @@ window.SITE_CONFIG = {
       demoUrl: "https://vogueway.ru/",
     },
     panorama: {
-      demoUrl: "",
+      demoUrl: "https://stressedk1d.github.io/panorama/",
     },
   },
 };

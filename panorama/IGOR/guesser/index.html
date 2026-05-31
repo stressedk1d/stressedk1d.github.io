@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Угадай число</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      width: 200px;
+    }
+
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+
+
+    #output {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+
+<body>
+  <h1>Громов Игорь</h1>
+  <h2>Компьютер загадал число от 1 до 100</h2>
+  <input type="number" id="userInput" placeholder="Введите ваше число" min="1" max="100">
+  <button id="submitBtn" onclick="Guess()">Угадать</button>
+  <button id="new" onclick="Restart()">Новая игра</button>
+
+  <div id="output"></div>
+  <div id="attempts"></div>
+  <img id="funnyImage" src="" alt="" style="display: none; width: 200px; height: auto; margin: auto;" />
+  
+  <script>
+    // Загадываем число от 1 до 100
+  const secretNumber = Math.floor(Math.random() * 100) + 1;
+  let attempts = 0;
+  const maxAttempts = 10; // Количество максимальных попыток
+  const previousGuesses = []; // Массив для хранения предыдущих попыток
+  const funnyImages = [
+              'https://www.raskraski.ru/p/800x/a8feb027520a9aa61b94aebd8eefbb27.jpg?1728018757',
+              'https://sun9-57.userapi.com/s/v1/ig2/sUaqbAI4UisU54lGJDSmssBSUCxrk1pCrquqWUWxrEukOcd5R4V-xkpVylYlku1iQOVacXzy-5jNQHV2Ao1plop0.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,960x1280&from=bu&u=f9rCmsaXnJ1NV8ozmHyhvs-aVquxQzHbSP7IhEnc1eI&cs=605x807',
+              'https://i.pinimg.com/236x/8a/e9/ed/8ae9ed1a33832cc81db2cd8b597aac71.jpg',
+              'https://img.championat.com/i/q/j/17230319961406628631.jpg',
+              'https://ixbt.online/live/images/original/31/96/01/2024/03/10/ee094307e6.png',
+          ];
+  let buttonSound = new Audio('zvonkiy-zvuk-najatiya-knopki1.mp3'); // Звук нажатия на кнопку
+       
+  
+  function Sound(){
+      buttonSound.play();
+  }
+  function Restart()
+  {
+  window.location.reload()
+  }
+  function Guess()
+  {
+  Sound();
+  const outputDiv = document.getElementById('output');
+  const attemptsDiv = document.getElementById('attempts');
+  const inputField = document.getElementById('userInput');
+  const submitButton = document.getElementById('submitBtn');
+  const funnyImage = document.getElementById('funnyImage');
+      const userInput = parseInt(inputField.value);
+     
+      if (isNaN(userInput) || userInput < 1 || userInput > 100) {
+          outputDiv.textContent = "Пожалуйста, введите число от 1 до 100.";
+          return;
+      }
+  
+      if (previousGuesses.includes(userInput)) {
+          outputDiv.textContent = "Вы уже вводили данное число";
+      } 
+      else if (userInput === secretNumber) {
+          outputDiv.textContent = `Поздравляю! Вы угадали число ${secretNumber} за ${attempts} ${attempts === 1 ? "попытку" : "попытки"}.`;
+          inputField.disabled = true;
+      } else if (userInput < secretNumber) {
+          outputDiv.textContent = "Ваше число меньше загаданного.";
+          previousGuesses.push(userInput);
+          attempts++;
+      } 
+      else {
+          outputDiv.textContent = "Ваше число больше загаданного.";
+          previousGuesses.push(userInput);
+          attempts++;
+      }
+  
+      const remainingAttempts = maxAttempts - attempts;
+      attemptsDiv.textContent = `Оставшиеся попытки: ${remainingAttempts}`;
+  
+      if (attempts === maxAttempts) {
+          outputDiv.textContent = `Извините, вы использовали все ${maxAttempts} попыток. Загаданное число было ${secretNumber}.`;
+          inputField.disabled = true;
+      }
+  
+      attemptsDiv.innerHTML += `<br>Ваши попытки: ${previousGuesses.join(', ')}`;
+  
+      inputField.value = '';
+  
+      const randomIndex = Math.floor(Math.random() * funnyImages.length);
+              funnyImage.src = funnyImages[randomIndex];
+              funnyImage.style.display = 'block';
+  };
+  </script>
+  </body>
+  </html>
