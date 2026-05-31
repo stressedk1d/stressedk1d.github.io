@@ -1,4 +1,5 @@
-const CACHE = "0bsession-v6";
+const CACHE = "0bsession-v7";
+const STALE_ASSETS = ["/images/background.jpg"];
 const ASSETS = [
   "/",
   "/index.html",
@@ -21,7 +22,12 @@ self.addEventListener("install", (event) => {
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
-      Promise.all(keys.filter((key) => key !== CACHE).map((key) => caches.delete(key)))
+      Promise.all([
+        ...keys.filter((key) => key !== CACHE).map((key) => caches.delete(key)),
+        ...STALE_ASSETS.map((url) =>
+          caches.open(CACHE).then((cache) => cache.delete(url))
+        ),
+      ])
     )
   );
   self.clients.claim();
