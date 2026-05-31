@@ -37,6 +37,12 @@ function applyTranslations(lang) {
     if (strings[key]) el.setAttribute("aria-label", strings[key]);
   });
 
+  const titleEl = document.querySelector("title[data-i18n]");
+  if (titleEl) {
+    const key = titleEl.dataset.i18n;
+    if (strings[key]) document.title = strings[key];
+  }
+
   if (langToggle) {
     langToggle.textContent = lang === "ru" ? "EN" : "RU";
   }
@@ -343,7 +349,22 @@ function initCv() {
   if (!url || !btn) return;
   btn.href = url;
   btn.classList.remove("hidden");
-  if (/\.pdf$/i.test(url)) btn.setAttribute("download", "");
+  if (/\.pdf$/i.test(url)) {
+    btn.setAttribute("download", "");
+  } else {
+    btn.removeAttribute("download");
+    btn.removeAttribute("target");
+  }
+
+  const printBtn = document.getElementById("cv-print");
+  printBtn?.addEventListener("click", () => window.print());
+}
+
+function initCvEmail() {
+  const el = document.getElementById("cv-email");
+  if (!el || !config.email) return;
+  el.textContent = config.email;
+  el.href = `mailto:${config.email}`;
 }
 
 function initContact() {
@@ -393,7 +414,9 @@ function initContact() {
 
 function initTheme() {
   const toggle = document.querySelector(".theme-toggle");
-  const saved = localStorage.getItem("theme") || "dark";
+  const saved =
+    localStorage.getItem("theme") ||
+    (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
   document.documentElement.setAttribute("data-theme", saved);
 
   const syncIcon = () => {
@@ -458,8 +481,9 @@ function initGitHubRepos() {
   const user = config.github || "stressedk1d";
   const strings = window.I18N[getLang()] || {};
   const skip = new Set(["stressedk1d.github.io"]);
+  const pinned = config.githubPinned || [];
 
-  fetch(`https://api.github.com/users/${user}/repos?sort=updated&per_page=12`)
+  fetch(`https://api.github.com/users/${user}/repos?sort=updated&per_page=30`)
     .then((res) => res.json())
     .then((repos) => {
       if (!Array.isArray(repos) || !repos.length) {
@@ -467,9 +491,12 @@ function initGitHubRepos() {
         return;
       }
 
-      const list = repos
-        .filter((repo) => !repo.fork && !skip.has(repo.name))
-        .slice(0, 6);
+      const filtered = repos.filter((repo) => !repo.fork && !skip.has(repo.name));
+      const byName = new Map(filtered.map((repo) => [repo.name, repo]));
+      const list = [
+        ...pinned.map((name) => byName.get(name)).filter(Boolean),
+        ...filtered.filter((repo) => !pinned.includes(repo.name)),
+      ].slice(0, 6);
 
       if (!list.length) {
         container.innerHTML = `<p class="github-repos__empty">${strings.githubEmpty || "No repos"}</p>`;
@@ -598,6 +625,7 @@ initTheme();
 initEmail();
 initDemo();
 initCv();
+initCvEmail();
 initContact();
 initGitHubRepos();
 initTyping();

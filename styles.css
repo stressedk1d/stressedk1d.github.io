@@ -1648,3 +1648,244 @@ html.js .bar__fill.is-animated {
   .splash { display: none; }
 }
 
+/* ——— CV page ——— */
+.cv-page {
+  background: var(--bg);
+  min-height: 100vh;
+}
+
+.cv-page .background,
+.cv-page #particles,
+.cv-page .cursor-glow { display: none; }
+
+.cv-sheet {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+}
+
+.cv-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cv-name {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.cv-title {
+  color: var(--accent-light);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.cv-summary {
+  color: var(--text-muted);
+  line-height: 1.55;
+  max-width: 36rem;
+}
+
+.cv-header__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.cv-section {
+  margin-bottom: 1.5rem;
+}
+
+.cv-section__title {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-light);
+  margin-bottom: 0.65rem;
+}
+
+.cv-contacts {
+  list-style: none;
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.92rem;
+}
+
+.cv-contacts a { color: var(--text); }
+
+.cv-tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.cv-tags li {
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  background: rgba(192, 132, 252, 0.12);
+  border: 1px solid rgba(192, 132, 252, 0.22);
+}
+
+.cv-project {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.cv-project:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.cv-project__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.2rem;
+}
+
+.cv-project__head h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+}
+
+.cv-project__period {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.cv-project__role {
+  font-size: 0.85rem;
+  color: var(--accent-light);
+  margin-bottom: 0.35rem;
+}
+
+.cv-project__links {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+}
+
+.cv-list,
+.cv-timeline {
+  padding-left: 1.15rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+.stack-list {
+  list-style: none;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.stack-list li {
+  padding-left: 1rem;
+  position: relative;
+}
+
+.stack-list li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--accent-light);
+}
+
+.arch-diagram {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.arch-diagram__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.arch-diagram__row--sub {
+  padding-top: 0.25rem;
+  border-top: 1px dashed rgba(255, 255, 255, 0.08);
+}
+
+.arch-box {
+  padding: 0.55rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.arch-box--accent {
+  background: rgba(192, 132, 252, 0.12);
+  border-color: rgba(192, 132, 252, 0.28);
+  color: var(--accent-light);
+}
+
+.arch-arrow {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+@media print {
+  .no-print,
+  .fab-group { display: none !important; }
+
+  .cv-page {
+    background: #fff;
+    color: #111;
+  }
+
+  .cv-page .cv-sheet { padding: 0; max-width: none; }
+
+  .cv-name,
+  .cv-section__title,
+  .cv-project__role { color: #333; }
+
+  .cv-summary,
+  .cv-list,
+  .cv-timeline,
+  .cv-project__period { color: #444; }
+
+  .cv-contacts a,
+  .cv-project__links a { color: #111; text-decoration: underline; }
+
+  .cv-tags li {
+    background: #f0f0f0;
+    border-color: #ccc;
+    color: #111;
+  }
+
+  .cv-header { border-bottom-color: #ccc; }
+  .cv-project { border-bottom-color: #ddd; }
+}
+
+[data-theme="light"] .cv-header {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .cv-project {
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .arch-box {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+

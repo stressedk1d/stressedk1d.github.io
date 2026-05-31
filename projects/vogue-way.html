@@ -3,9 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Vogue Way — маркетплейс модной одежды">
+  <meta name="description" content="Vogue Way — маркетплейс модной одежды с AI-поиском" data-i18n-content="voguePageDesc">
   <meta name="theme-color" content="#7c3aed">
-  <title>Vogue Way — 0bsession</title>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Vogue Way — 0bsession">
+  <meta property="og:description" content="Дипломный маркетплейс модной одежды с AI-поиском по фото" data-i18n-content="voguePageDesc">
+  <meta property="og:url" content="https://stressedk1d.github.io/projects/vogue-way.html">
+  <meta property="og:image" content="https://stressedk1d.github.io/images/marketplace.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://stressedk1d.github.io/images/marketplace.png">
+  <link rel="canonical" href="https://stressedk1d.github.io/projects/vogue-way.html">
+  <title data-i18n="voguePageTitle">Vogue Way — 0bsession</title>
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css">
@@ -52,6 +60,31 @@
     </section>
 
     <section class="section reveal is-visible">
+      <h2 class="section-title" data-i18n="vogueStackTitle">Стек</h2>
+      <ul class="stack-list card glass">
+        <li data-i18n="vogueStackFrontend">Frontend: Next.js, TypeScript, React</li>
+        <li data-i18n="vogueStackBackend">Backend: Python, FastAPI, SQLAlchemy, Alembic</li>
+        <li data-i18n="vogueStackInfra">Инфра: Docker, PostgreSQL, Telegram-бот</li>
+      </ul>
+    </section>
+
+    <section class="section reveal is-visible">
+      <h2 class="section-title" data-i18n="vogueArchTitle">Архитектура</h2>
+      <div class="arch-diagram card glass">
+        <div class="arch-diagram__row">
+          <div class="arch-box" data-i18n="vogueArchFrontend">Next.js UI</div>
+          <span class="arch-arrow" aria-hidden="true">→</span>
+          <div class="arch-box" data-i18n="vogueArchApi">FastAPI REST</div>
+          <span class="arch-arrow" aria-hidden="true">→</span>
+          <div class="arch-box" data-i18n="vogueArchDb">PostgreSQL</div>
+        </div>
+        <div class="arch-diagram__row arch-diagram__row--sub">
+          <div class="arch-box arch-box--accent" data-i18n="vogueArchAi">CLIP · AI-поиск</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal is-visible">
       <h2 class="section-title" data-i18n="vogueFeaturesTitle">Функции</h2>
       <ul class="feature-list card glass">
         <li data-i18n="vogueFeature1">Каталог одежды, обуви и аксессуаров</li>
@@ -59,6 +92,20 @@
         <li data-i18n="vogueFeature3">Корзина и оформление заказов</li>
         <li data-i18n="vogueFeature4">Авторизация и личный кабинет</li>
       </ul>
+    </section>
+
+    <section class="section reveal is-visible">
+      <h2 class="section-title" data-i18n="vogueTechTitle">Технические детали</h2>
+      <ul class="feature-list card glass">
+        <li data-i18n="vogueTech1">JWT-авторизация, корзина и заказы через REST API</li>
+        <li data-i18n="vogueTech2">AI-поиск: загрузка фото → CLIP-эмбеддинг → поиск по каталогу</li>
+        <li data-i18n="vogueTech3">Alembic-миграции, pytest-тесты auth/cart/orders</li>
+      </ul>
+    </section>
+
+    <section class="section reveal is-visible">
+      <h2 class="section-title" data-i18n="vogueResultTitle">Результат</h2>
+      <div class="card glass"><p data-i18n="vogueResultText">Рабочий маркетплейс с демо на vogueway.ru.</p></div>
     </section>
 
     <nav class="project-nav">

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="0bsession — резюме full-stack разработчика" data-i18n-content="cvMeta">
+  <meta name="theme-color" content="#7c3aed">
+  <meta name="robots" content="noindex">
+  <title data-i18n="cvPageTitle">Резюме — 0bsession</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="cv-page page-load">
+  <main class="cv-sheet" id="main">
+    <header class="cv-header">
+      <div class="cv-header__main">
+        <h1 class="cv-name">0bsession</h1>
+        <p class="cv-title" data-i18n="cvRole">Full-stack Web Developer</p>
+        <p class="cv-summary" data-i18n="cvSummary">Начинающий full-stack разработчик. Открыт к стажировке и junior-позициям.</p>
+      </div>
+      <div class="cv-header__actions no-print">
+        <button class="btn btn--neon" type="button" id="cv-print" data-i18n="cvPrint">Печать / PDF</button>
+        <a class="btn btn--ghost" href="index.html" data-i18n="backHome">← На главную</a>
+      </div>
+    </header>
+
+    <section class="cv-section">
+      <h2 class="cv-section__title" data-i18n="cvContactTitle">Контакты</h2>
+      <ul class="cv-contacts">
+        <li><span data-i18n="cvSite">Сайт</span>: <a href="https://stressedk1d.github.io/">stressedk1d.github.io</a></li>
+        <li><span>GitHub</span>: <a href="https://github.com/stressedk1d">github.com/stressedk1d</a></li>
+        <li><span>Telegram</span>: <a href="https://t.me/phaqueu3">@phaqueu3</a></li>
+        <li><span>Email</span>: <a id="cv-email" href="#">gromov-igor2006.com@yandex.ru</a></li>
+      </ul>
+    </section>
+
+    <section class="cv-section">
+      <h2 class="cv-section__title" data-i18n="cvSkillsTitle">Навыки</h2>
+      <ul class="cv-tags">
+        <li>TypeScript</li><li>JavaScript</li><li>React</li><li>Next.js</li>
+        <li>Python</li><li>FastAPI</li><li>PostgreSQL</li><li>Docker</li>
+        <li>HTML</li><li>CSS</li><li>Git</li><li>Three.js</li>
+      </ul>
+    </section>
+
+    <section class="cv-section">
+      <h2 class="cv-section__title" data-i18n="cvProjectsTitle">Проекты</h2>
+
+      <article class="cv-project">
+        <div class="cv-project__head">
+          <h3>Vogue Way</h3>
+          <span class="cv-project__period">2025–2026</span>
+        </div>
+        <p class="cv-project__role" data-i18n="roleVogueBadge">Full-stack разработчик</p>
+        <p data-i18n="cvVogueDesc">Дипломный маркетплейс модной одежды: каталог, корзина, заказы, AI-поиск по фото.</p>
+        <p class="cv-project__links">
+          <a href="https://vogueway.ru/" target="_blank" rel="noopener noreferrer">vogueway.ru</a>
+          · <a href="https://github.com/stressedk1d/marketplace" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </p>
+      </article>
+
+      <article class="cv-project">
+        <div class="cv-project__head">
+          <h3>Panorama</h3>
+          <span class="cv-project__period">2025</span>
+        </div>
+        <p class="cv-project__role" data-i18n="rolePanoramaBadge">Разработчик</p>
+        <p data-i18n="cvPanoramaDesc">Командный проект МГИМО: страница команды и 360° тур — 17 панорам на Panolens + Three.js.</p>
+        <p class="cv-project__links">
+          <a href="https://stressedk1d.github.io/panorama/" target="_blank" rel="noopener noreferrer">Demo</a>
+          · <a href="https://github.com/stressedk1d/panorama" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </p>
+      </article>
+    </section>
+
+    <section class="cv-section">
+      <h2 class="cv-section__title" data-i18n="cvLookingTitle">Что ищу</h2>
+      <ul class="cv-list">
+        <li data-i18n="looking1">Junior / стажировка</li>
+        <li data-i18n="looking2">Frontend · Backend · Full-stack</li>
+        <li data-i18n="looking3">Удалёнка или офис</li>
+      </ul>
+    </section>
+
+    <section class="cv-section">
+      <h2 class="cv-section__title" data-i18n="timelineTitle">Путь</h2>
+      <ol class="cv-timeline">
+        <li><strong>2024</strong> — <span data-i18n="timeline1">Начал изучать web-разработку</span></li>
+        <li><strong>2025</strong> — <span data-i18n="timeline2">Первые проекты и практика</span></li>
+        <li><strong>2026</strong> — <span data-i18n="timeline3">Дипломный проект Vogue Way</span></li>
+      </ol>
+    </section>
+  </main>
+
+  <div class="fab-group no-print">
+    <button class="fab lang-toggle" type="button">EN</button>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="i18n.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
