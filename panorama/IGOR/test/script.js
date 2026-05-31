@@ -17,12 +17,14 @@ function Check() {
     let correctanswers = 0;
 
     for (let i = 0; i < answers.length; i++) {
+        const table = document.getElementById(`q${i + 1}`);
         if (useranswers[i] === answers[i]) {
-            document.getElementById(`q${i + 1}`).style.border = '4px solid green';
+            table.classList.add("table--correct");
+            table.classList.remove("table--wrong");
             correctanswers++;
-        }
-        else {
-            document.getElementById(`q${i + 1}`).style.border = '4px solid red';
+        } else {
+            table.classList.add("table--wrong");
+            table.classList.remove("table--correct");
         }
     }
 

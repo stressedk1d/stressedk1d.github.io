@@ -1,13 +1,100 @@
-/* Сброс стандартных отступов и полей для html и body */
-html, body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden; /* Скрываем все прокрутки */
-    height: 100%; /* Занимает всю высоту области видимости */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+  font-family: "Inter", system-ui, sans-serif;
 }
 
-/* Заставляем .pano-image также занимать всю область видимости */
 #pano-image {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
+}
+
+.pano-ui {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(to bottom, rgba(5, 5, 8, 0.82), transparent);
+  pointer-events: none;
+}
+
+.pano-ui a,
+.pano-ui p {
+  pointer-events: auto;
+}
+
+.pano-ui__back {
+  color: #c084fc;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.pano-ui__back:hover {
+  text-decoration: underline;
+}
+
+.pano-ui__hint {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #b4b4bc;
+}
+
+.pano-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  background: #050508;
+  color: #c084fc;
+  font-size: 0.88rem;
+  transition: opacity 0.4s ease;
+}
+
+.pano-loader.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pano-loader__bars {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.pano-loader__bars span {
+  width: 8px;
+  height: 28px;
+  border-radius: 999px;
+  background: #c084fc;
+  opacity: 0.35;
+  animation: pano-bar 0.7s ease-in-out infinite alternate;
+}
+
+.pano-loader__bars span:nth-child(2) { animation-delay: 0.15s; }
+.pano-loader__bars span:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes pano-bar {
+  to {
+    transform: scaleY(1.35);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .pano-ui__hint {
+    flex-basis: 100%;
+  }
 }

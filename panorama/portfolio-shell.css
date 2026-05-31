@@ -1,0 +1,216 @@
+@import url("../fonts/fonts.css");
+
+:root {
+  --bg: #050508;
+  --text: #f4f4f5;
+  --text-muted: #b4b4bc;
+  --accent: #7c3aed;
+  --accent-light: #c084fc;
+  --border: rgba(168, 85, 247, 0.22);
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  color: var(--text);
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(124, 58, 237, 0.22), transparent),
+    var(--bg);
+}
+
+.pano-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 2.5rem;
+}
+
+.pano-shell__back {
+  display: inline-flex;
+  margin-bottom: 1.25rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.pano-shell__back:hover {
+  color: var(--accent-light);
+}
+
+.pano-shell__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  text-align: center;
+  color: var(--accent-light);
+  margin: 0 0 0.35rem;
+  letter-spacing: 0.04em;
+}
+
+.pano-shell__subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 0 0 1.75rem;
+}
+
+.team-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.team-member {
+  padding: 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  text-align: center;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-3px);
+  border-color: rgba(192, 132, 252, 0.35);
+}
+
+.team-member img {
+  width: 100%;
+  max-width: 140px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto 0.65rem;
+  display: block;
+  border: 2px solid rgba(192, 132, 252, 0.25);
+}
+
+.member-info h3 {
+  margin: 0 0 0.25rem;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  line-height: 1.3;
+}
+
+.member-info h3 a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.member-info h3 a:hover {
+  color: var(--accent-light);
+}
+
+.member-info p {
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+}
+
+.preview {
+  display: flex;
+  justify-content: center;
+}
+
+.clickable-area {
+  position: relative;
+  display: block;
+  max-width: 640px;
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 16px 48px rgba(124, 58, 237, 0.18);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.clickable-area:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 56px rgba(124, 58, 237, 0.28);
+}
+
+.clickable-area::before {
+  content: "360° TOUR";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 4vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #fff;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.65);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.clickable-image {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.65rem;
+  z-index: 1000;
+  transition: opacity 0.45s ease;
+}
+
+.preloader.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.bar {
+  width: 10px;
+  height: 36px;
+  border-radius: 999px;
+  background: var(--accent-light);
+  opacity: 0.35;
+  animation: pulse 0.7s ease-in-out infinite alternate;
+}
+
+.bar:nth-child(2) { animation-delay: 0.15s; }
+.bar:nth-child(3) { animation-delay: 0.3s; }
+.bar:nth-child(4) { animation-delay: 0.45s; }
+
+@keyframes pulse {
+  to {
+    transform: scaleY(1.35);
+    opacity: 1;
+  }
+}
+
+.spark {
+  position: absolute;
+  width: 4px;
+  height: 2px;
+  background: var(--accent-light);
+  pointer-events: none;
+  animation: spark-animation 0.6s ease-out forwards;
+}
+
+@keyframes spark-animation {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--dx), var(--dy)) scale(0.3); opacity: 0; }
+}

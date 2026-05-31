@@ -1,5 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
   const panoImage = document.getElementById('pano-image');
+  const loader = document.getElementById('pano-loader');
+
+  const hideLoader = () => {
+    if (!loader || loader.classList.contains('is-hidden')) return;
+    loader.classList.add('is-hidden');
+    setTimeout(() => loader.remove(), 450);
+  };
 
   // Массив путей к панорамам
   const panoPaths = [
@@ -123,6 +130,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Добавление панорам
   panoramas.forEach(panorama => viewer.add(panorama));
+
+  panoramas[0]?.addEventListener('enter-fade-complete', hideLoader, { once: true });
+  setTimeout(hideLoader, 12000);
 
   // Функция для создания infospots
   const createInfospot = (panorama, targetPanorama, position, direction) => {

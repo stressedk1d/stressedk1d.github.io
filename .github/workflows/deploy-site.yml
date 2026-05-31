@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - "index.html"
+      - "cv.html"
+      - "offline.html"
       - "styles.css"
       - "script.js"
       - "config.js"
@@ -13,8 +15,12 @@ on:
       - "manifest.json"
       - "favicon.svg"
       - "og-image.png"
+      - "og-image.gif"
+      - "generate_assets.py"
+      - "fonts/**"
       - "images/**"
       - "icons/**"
+      - "notes/**"
       - "panorama/**"
       - "404.html"
       - "robots.txt"
@@ -41,11 +47,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install Pillow
+        run: pip install pillow
+
+      - name: Generate assets
+        run: python generate_assets.py
+
       - name: Prepare site bundle
         run: |
           mkdir site-dist
-          cp index.html styles.css script.js config.js i18n.js sw.js manifest.json favicon.svg og-image.png 404.html robots.txt sitemap.xml site-dist/
-          cp -r images icons projects panorama site-dist/
+          cp index.html cv.html offline.html styles.css script.js config.js i18n.js sw.js manifest.json favicon.svg og-image.png og-image.gif 404.html robots.txt sitemap.xml site-dist/
+          cp -r fonts images icons projects panorama notes site-dist/
           touch site-dist/.nojekyll
 
       - name: Setup Pages

@@ -1,4 +1,4 @@
-const CACHE = "0bsession-v20";
+const CACHE = "0bsession-v22";
 const STALE_ASSETS = ["/images/background.jpg"];
 const ASSETS = [
   "/",
@@ -21,6 +21,10 @@ const ASSETS = [
   "/404.html",
   "/projects/vogue-way.html",
   "/projects/panorama.html",
+  "/notes/deploy.html",
+  "/notes/panorama-compress.html",
+  "/notes/vogue-ai.html",
+  "/notes/note.css",
 ];
 
 self.addEventListener("install", (event) => {

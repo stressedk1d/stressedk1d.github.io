@@ -1,60 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Team Page</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Panorama — командный проект МГИМО: страница команды и 360° тур">
+  <meta name="theme-color" content="#7c3aed">
+  <title>Panorama · команда — 0bsession</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="portfolio-shell.css">
 </head>
 <body>
-
-  <div class="preloader">
+  <div class="preloader" id="preloader" aria-hidden="true">
     <div class="bar"></div>
     <div class="bar"></div>
     <div class="bar"></div>
-    <div class="bar"></div>    
+    <div class="bar"></div>
   </div>
 
-  <div class="team-container">
-    <div class="team-member">
-      <img src="avatars/VADIM.webp" alt="VADIM">
-      <div class="member-info">
-        <h3>VADIM FIALKO</h3>
-        <p>DIRECTOR</p>
-      </div>
-    </div>
+  <div class="pano-shell">
+    <a class="pano-shell__back" href="https://stressedk1d.github.io/">← Портфолио 0bsession</a>
+    <h1 class="pano-shell__title">Panorama</h1>
+    <p class="pano-shell__subtitle">MGIMO · Director · Coder · Designer · Tester</p>
 
-    <div class="team-member">
-       <img src="avatars/IGOR.webp" alt="IGOR">
-       <div class="member-info">
-        <h3><a href="https://stressedk1d.github.io/" target="_blank" rel="noopener noreferrer">IGOR GROMOV</a></h3>
-        <p>CODER</p>
-      </div>
-    </div>
-
-    <div class="team-member">
-       <img src="avatars/TIMOFEY.webp" alt="TIMOFEY">
-       <div class="member-info">
-        <h3>TIMOFEY MARKISOV</h3>
-        <p>DESIGNER</p>
-      </div>
-    </div>
-
-    <div class="team-member">
-      <img src="avatars/EGOR.webp" alt="EGOR">
+    <div class="team-container">
+      <div class="team-member">
+        <img src="avatars/VADIM.webp" alt="Vadim Fialko" width="140" height="140" loading="lazy">
         <div class="member-info">
-        <h3>EGOR SHUBOCHKIN</h3>
-        <p>TESTER</p>
+          <h3>VADIM FIALKO</h3>
+          <p>Director</p>
+        </div>
       </div>
+      <div class="team-member">
+        <img src="avatars/IGOR.webp" alt="Igor Gromov" width="140" height="140" loading="lazy">
+        <div class="member-info">
+          <h3><a href="https://stressedk1d.github.io/">IGOR GROMOV</a></h3>
+          <p>Coder</p>
+        </div>
+      </div>
+      <div class="team-member">
+        <img src="avatars/TIMOFEY.webp" alt="Timofey Markisov" width="140" height="140" loading="lazy">
+        <div class="member-info">
+          <h3>TIMOFEY MARKISOV</h3>
+          <p>Designer</p>
+        </div>
+      </div>
+      <div class="team-member">
+        <img src="avatars/EGOR.webp" alt="Egor Shubochkin" width="140" height="140" loading="lazy">
+        <div class="member-info">
+          <h3>EGOR SHUBOCHKIN</h3>
+          <p>Tester</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="preview">
+      <a href="PANORAMA/index.html" class="clickable-area">
+        <img src="images/preview.jpg" alt="Открыть 360° тур" class="clickable-image" width="640" height="400" loading="lazy">
+      </a>
     </div>
   </div>
 
-  <div class="preview">
-    <a href="PANORAMA/index.html" class="clickable-area">
-      <img src="images/preview.jpg" alt="" class="clickable-image">
-    </a>
-  </div>
-
-  <script src=script.js></script>
+  <script src="script.js"></script>
 </body>
 </html>

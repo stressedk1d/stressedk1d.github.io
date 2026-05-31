@@ -1,0 +1,68 @@
+.page--note {
+  max-width: 680px;
+}
+
+.note-article {
+  padding: 1.35rem;
+  line-height: 1.65;
+}
+
+.note-article__date {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-light);
+  margin-bottom: 0.5rem;
+}
+
+.note-article__title {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  margin-bottom: 1rem;
+}
+
+.note-article p {
+  margin-bottom: 0.85rem;
+  color: var(--text-muted);
+}
+
+.note-article p:last-child {
+  margin-bottom: 0;
+}
+
+.note-article ul,
+.note-article ol {
+  margin: 0.5rem 0 1rem 1.15rem;
+  color: var(--text-muted);
+}
+
+.note-article li {
+  margin-bottom: 0.35rem;
+}
+
+.note-article code {
+  font-size: 0.88em;
+  padding: 0.12rem 0.35rem;
+  border-radius: 6px;
+  background: rgba(124, 58, 237, 0.14);
+  color: var(--accent-light);
+}
+
+.note-card {
+  text-decoration: none;
+  color: inherit;
+}
+
+.note-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(192, 132, 252, 0.35);
+  box-shadow: 0 12px 36px rgba(124, 58, 237, 0.14);
+}
+
+.note-card__read {
+  margin-top: auto;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent-light);
+}

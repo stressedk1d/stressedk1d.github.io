@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Сжатие панорам Panorama" data-i18n-content="note2Desc">
+  <meta property="og:title" content="Сжатие панорам Panorama — 0bsession" data-i18n-content="note2Title">
+  <meta property="og:description" content="510 MB → ~10 MB" data-i18n-content="note2Desc">
+  <meta property="og:url" content="https://stressedk1d.github.io/notes/panorama-compress.html">
+  <meta property="og:image" content="https://stressedk1d.github.io/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://stressedk1d.github.io/og-image.png">
+  <link rel="canonical" href="https://stressedk1d.github.io/notes/panorama-compress.html">
+  <link rel="alternate" hreflang="ru" href="https://stressedk1d.github.io/notes/panorama-compress.html?lang=ru">
+  <link rel="alternate" hreflang="en" href="https://stressedk1d.github.io/notes/panorama-compress.html?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://stressedk1d.github.io/notes/panorama-compress.html">
+  <title data-i18n="note2Title">Сжатие панорам — 0bsession</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="note.css">
+</head>
+<body class="project-page page-load">
+  <main class="page page--project page--note">
+    <a class="back-link" href="../index.html#notes" data-i18n="backNotes">← К заметкам</a>
+    <article class="note-article card glass reveal is-visible">
+      <time class="note-article__date" datetime="2026-04">Apr 2026</time>
+      <h1 class="note-article__title" data-i18n="note2Title">Сжатие панорам Panorama</h1>
+      <p data-i18n="note2p1">17 equirectangular-панорам для Panolens весили ~510 MB — GitHub Pages такое не переваривает. Нужно было сжать без полной потери качества на экране.</p>
+      <p data-i18n="note2p2">Написал скрипт <code>compress_panoramas.py</code> на Pillow: resize + JPEG quality, пакетная обработка папки PANORAMA/images.</p>
+      <ul>
+        <li data-i18n="note2li1">Было: ~510 MB, стало: ~10 MB</li>
+        <li data-i18n="note2li2">Удалены дубликаты PANORAMA/images (~500 MB)</li>
+        <li data-i18n="note2li3">Обновлён preview для карточки на главной</li>
+      </ul>
+      <p data-i18n="note2p3">Итог: демо грузится за секунды, а не минуты. Для портфолио это критично — никто не ждёт 500 MB на мобилке.</p>
+    </article>
+  </main>
+  <div class="fab-group"><button class="fab lang-toggle" type="button">EN</button></div>
+  <script src="../config.js"></script>
+  <script src="../i18n.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>

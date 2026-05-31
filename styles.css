@@ -992,6 +992,11 @@ html.js .bar__fill.is-animated {
   color: var(--accent-cyan);
 }
 
+.status--live {
+  background: rgba(34, 197, 94, 0.14);
+  color: #86efac;
+}
+
 .status--mini {
   background: rgba(124, 58, 237, 0.18);
   color: var(--accent-light);
@@ -2052,6 +2057,22 @@ html.js .bar__fill.is-animated {
   flex-direction: column;
   gap: 0.45rem;
   min-height: 100%;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.note-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(192, 132, 252, 0.35);
+  box-shadow: 0 12px 36px rgba(124, 58, 237, 0.14);
+}
+
+.note-card__read {
+  margin-top: auto;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent-light);
 }
 
 .note-card__date {
@@ -2101,6 +2122,146 @@ html.js .bar__fill.is-animated {
 
 .now-playing__link:hover {
   text-decoration: underline;
+}
+
+.now-playing__embed iframe {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  border: 0;
+  border-radius: 12px;
+}
+
+.reviews-grid {
+  display: grid;
+  gap: 0.85rem;
+}
+
+@media (min-width: 768px) {
+  .reviews-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.review-card {
+  margin: 0;
+  padding: 1.1rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.review-card__text {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.review-card__text::before {
+  content: "“";
+  color: var(--accent-light);
+  font-size: 1.35rem;
+  line-height: 0;
+  vertical-align: -0.2em;
+  margin-right: 0.15rem;
+}
+
+.review-card__role {
+  font-style: normal;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent-light);
+}
+
+.github-chart__link {
+  display: block;
+  text-decoration: none;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.github-chart__link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(192, 132, 252, 0.35);
+}
+
+.github-chart__link:focus-visible {
+  outline: 2px solid var(--accent-light);
+  outline-offset: 3px;
+}
+
+.cv-education {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.cv-education__school {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.cv-education__period,
+.cv-education__focus {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+.project-screenshots {
+  display: grid;
+  gap: 0.85rem;
+}
+
+@media (min-width: 640px) {
+  .project-screenshots {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.project-screenshot {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 0;
+  border: 1px solid rgba(168, 85, 247, 0.22);
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.project-screenshot:hover {
+  transform: translateY(-2px);
+  border-color: rgba(192, 132, 252, 0.35);
+}
+
+.project-screenshot img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+}
+
+.project-screenshot span:last-child {
+  padding: 0 0.75rem 0.75rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.project-screenshot--cta {
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+
+.project-screenshot__icon {
+  font-size: 2rem;
+  line-height: 1;
 }
 
 @media (min-width: 1100px) {

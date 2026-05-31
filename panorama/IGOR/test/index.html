@@ -1,22 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#7c3aed">
   <title>Тест по информатике — 0bsession</title>
   <link rel="icon" href="../../../favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../mini-app.css">
-  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="mini-shell.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 <div class="test-shell">
   <a class="test-shell__back" href="https://stressedk1d.github.io/#mini-projects">← Портфолио</a>
-    <h1 align="center" class="headline">Тест по информатике</h1>
-    <table border="0" id="q1" class="table">
+  <h1 class="headline">Тест по информатике</h1>    <table border="0" id="q1" class="table">
         <tr>
             <td rowspan="3">1</td>
             <td colspan="4" class="task">
@@ -167,9 +166,7 @@
     <table border="0" id="q8" class="table">
         <tr>
             <td rowspan="3">8</td>
-            <td colspan="4" class="task">Каково наибольшее целое число Z, при котором ложно высказывание? (8Z - 6 < 75 )
-                    → (Z * (Z - 1)> 65)</75>
-            </td>
+            <td colspan="4" class="task">Каково наибольшее целое число Z, при котором ложно высказывание? (8Z − 6 &lt; 75) → (Z × (Z − 1) &gt; 65)</td>
         </tr>
         <tr>
             <td class="variant">1)100</td>
@@ -226,14 +223,12 @@
 
     <script src="script.js"></script>
 
-<div class="rectangle-buttons">
-        <button onclick="saveResults(prompt('Введите имя для результатов'))" class="save">Сохранить результаты</button>
-        <button onclick="Check()" class="check">Проверить</button>
-        <button onclick="loadResults()" class="load">Загрузить результаты</button>
+<div class="quiz-actions">
+  <button type="button" onclick="saveResults(prompt('Введите имя для результатов'))" class="btn btn--ghost">Сохранить</button>
+  <button type="button" onclick="Check()" class="btn btn--primary">Проверить</button>
+  <button type="button" onclick="loadResults()" class="btn btn--ghost">Загрузить</button>
 </div>
-    <br />
-    <p id="result" class="result_" hidden="true"></p>
-</div>
+<p id="result" class="result_" hidden></p></div>
 </body>
 
 </html>

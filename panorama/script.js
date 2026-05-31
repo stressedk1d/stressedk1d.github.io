@@ -17,9 +17,7 @@ document.body.addEventListener("click", (e) => {
   });
   
   
-  window.addEventListener('load', function() {
-    const preloader = document.querySelector('.preloader');
-    setTimeout(() => {
-      preloader.classList.add('hide');
-    }, 2000); // Задержка в 2000 миллисекунд (2 секунды)
+  window.addEventListener("load", () => {
+    const preloader = document.getElementById("preloader");
+    setTimeout(() => preloader?.classList.add("hide"), 1200);
   });

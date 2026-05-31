@@ -12,6 +12,7 @@ window.SITE_CONFIG = {
     title: "Заболел",
     artist: "БРЕДИШЬ",
     url: "https://open.spotify.com/track/6hyVgzsyH5idE8a4KxwZW5",
+    trackId: "6hyVgzsyH5idE8a4KxwZW5",
   },
   projects: {
     marketplace: {

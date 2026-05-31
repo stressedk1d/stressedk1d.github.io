@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Как деплоится портфолио 0bsession" data-i18n-content="note1Desc">
+  <meta property="og:title" content="Как я деплою портфолио — 0bsession" data-i18n-content="note1Title">
+  <meta property="og:description" content="GitHub Pages, PowerShell и GitHub Actions" data-i18n-content="note1Desc">
+  <meta property="og:url" content="https://stressedk1d.github.io/notes/deploy.html">
+  <meta property="og:image" content="https://stressedk1d.github.io/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://stressedk1d.github.io/og-image.png">
+  <link rel="canonical" href="https://stressedk1d.github.io/notes/deploy.html">
+  <link rel="alternate" hreflang="ru" href="https://stressedk1d.github.io/notes/deploy.html?lang=ru">
+  <link rel="alternate" hreflang="en" href="https://stressedk1d.github.io/notes/deploy.html?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://stressedk1d.github.io/notes/deploy.html">
+  <title data-i18n="note1Title">Как я деплою портфолио — 0bsession</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="note.css">
+</head>
+<body class="project-page page-load">
+  <main class="page page--project page--note">
+    <a class="back-link" href="../index.html#notes" data-i18n="backNotes">← К заметкам</a>
+    <article class="note-article card glass reveal is-visible">
+      <time class="note-article__date" datetime="2026-05">May 2026</time>
+      <h1 class="note-article__title" data-i18n="note1Title">Как я деплою портфолио</h1>
+      <p data-i18n="note1p1">Сайт живёт на GitHub Pages в репозитории stressedk1d.github.io. Локально исходники лежат в папке My_web_site, а деплой идёт двумя способами.</p>
+      <p data-i18n="note1p2"><strong>deploy.ps1</strong> — копирует файлы в _deploy (клон репозитория), генерирует og-image через Python и пушит в main.</p>
+      <ul>
+        <li data-i18n="note1li1">generate_assets.py — og-image.png, og-image.gif и PWA-иконки</li>
+        <li data-i18n="note1li2">Копирование fonts, images, projects, panorama, notes</li>
+        <li data-i18n="note1li3">git push origin main</li>
+      </ul>
+      <p data-i18n="note1p3"><strong>GitHub Actions</strong> — workflow deploy-site.yml собирает bundle на push и деплоит через GitHub Pages artifact. Удобно, если пушишь прямо в репозиторий сайта.</p>
+    </article>
+  </main>
+  <div class="fab-group"><button class="fab lang-toggle" type="button">EN</button></div>
+  <script src="../config.js"></script>
+  <script src="../i18n.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>

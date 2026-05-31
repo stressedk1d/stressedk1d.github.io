@@ -1,15 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" />
-    <title>Panorama</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r105/three.min.js"></script>
-    <script src='js/main.js'></script>
-    <script src='js/panolens.min.js' defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050508">
+  <title>Panorama 360° — 0bsession</title>
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="js/three.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/panolens.min.js" defer></script>
 </head>
 <body>
-    <div id="pano-image"></div>
+  <div class="pano-ui">
+    <a class="pano-ui__back" href="../index.html">← К команде</a>
+    <p class="pano-ui__hint">Тяните мышью · кликайте на стрелки для перехода между сценами</p>
+  </div>
+  <div class="pano-loader" id="pano-loader" role="status" aria-live="polite">
+    <div class="pano-loader__bars" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
+    <span>Загрузка панорамы…</span>
+  </div>
+  <div id="pano-image"></div>
 </body>
 </html>

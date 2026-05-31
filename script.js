@@ -60,6 +60,11 @@ function applyTranslations(lang) {
     if (strings[key]) document.title = strings[key];
   }
 
+  document.querySelectorAll('meta[property="og:title"][data-i18n-content]').forEach((el) => {
+    const key = el.dataset.i18nContent;
+    if (strings[key]) el.setAttribute("content", strings[key]);
+  });
+
   if (langToggle) {
     langToggle.textContent = lang === "ru" ? "EN" : "RU";
   }
@@ -131,10 +136,11 @@ function initDemo() {
   ];
 
   demos.forEach(([id, url]) => {
-    const btn = document.getElementById(id);
-    if (!btn || !url) return;
-    btn.href = url;
-    btn.classList.remove("hidden");
+    if (!url) return;
+    document.querySelectorAll(`#${CSS.escape(id)}`).forEach((btn) => {
+      btn.href = url;
+      btn.classList.remove("hidden");
+    });
   });
 }
 
@@ -163,7 +169,20 @@ function initNav() {
     ...document.querySelectorAll(".fab--contact"),
   ];
 
-  const sectionIds = ["top", "projects", "about", "timeline", "skills", "learning", "links", "github", "contact"];
+  const sectionIds = [
+    "top",
+    "projects",
+    "mini-projects",
+    "about",
+    "timeline",
+    "skills",
+    "learning",
+    "notes",
+    "reviews",
+    "links",
+    "github",
+    "contact",
+  ];
   const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean);
 
   const setActive = (hash) => {
@@ -476,6 +495,7 @@ function initTheme() {
     syncIcon();
     const streak = document.getElementById("github-streak");
     if (streak) streak.src = getGitHubStreakUrl();
+    initNowPlaying();
   });
 }
 
@@ -613,6 +633,12 @@ function initGitHubRepos() {
     });
 }
 
+function getSpotifyTrackId(track) {
+  if (track?.trackId) return track.trackId;
+  const match = track?.url?.match(/track\/([a-zA-Z0-9]+)/);
+  return match?.[1] || null;
+}
+
 function initNowPlaying() {
   const block = document.getElementById("now-playing");
   const track = config.nowPlaying;
@@ -622,6 +648,9 @@ function initNowPlaying() {
   const titleEl = document.getElementById("now-playing-title");
   const artistEl = document.getElementById("now-playing-artist");
   const linkEl = document.getElementById("now-playing-link");
+  const embedEl = document.getElementById("now-playing-embed");
+  const trackId = getSpotifyTrackId(track);
+  const darkTheme = document.documentElement.getAttribute("data-theme") !== "light";
 
   if (titleEl) titleEl.textContent = track.title;
   if (artistEl) artistEl.textContent = track.artist || "";
@@ -632,6 +661,11 @@ function initNowPlaying() {
     } else {
       linkEl.hidden = true;
     }
+  }
+
+  if (embedEl && trackId) {
+    embedEl.hidden = false;
+    embedEl.innerHTML = `<iframe title="Spotify: ${track.title}" src="https://open.spotify.com/embed/track/${trackId}?utm_source=generator&theme=${darkTheme ? 0 : 1}" width="100%" height="80" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
   }
 }
 

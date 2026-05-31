@@ -22,6 +22,7 @@
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <link rel="manifest" href="manifest.json">
   <link rel="preload" href="fonts/fonts.css" as="style">
+  <link rel="preload" href="fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="fonts/fonts.css">
   <link rel="stylesheet" href="styles.css">
   <script type="application/ld+json">
@@ -57,8 +58,11 @@
 
   <nav class="side-nav" aria-label="Навигация">
     <a class="side-nav__link" href="#projects" data-i18n="navProjects">Проекты</a>
+    <a class="side-nav__link" href="#mini-projects" data-i18n="navMiniProjects">Мини-проекты</a>
+    <a class="side-nav__link" href="#notes" data-i18n="navNotes">Заметки</a>
     <a class="side-nav__link" href="#about" data-i18n="navAbout">Обо мне</a>
     <a class="side-nav__link" href="#skills" data-i18n="navSkills">Навыки</a>
+    <a class="side-nav__link" href="cv.html" data-i18n="navCv">Резюме</a>
     <a class="side-nav__link" href="#links" data-i18n="navLinks">Ссылки</a>
     <a class="side-nav__link" href="#github" data-i18n="navGithub">GitHub</a>
     <a class="side-nav__link" href="#contact" data-i18n="navContactForm">Контакт</a>
@@ -67,8 +71,11 @@
   <div class="mobile-menu" id="mobile-menu" hidden>
     <nav class="mobile-menu__nav">
       <a class="mobile-menu__link" href="#projects" data-i18n="navProjects">Проекты</a>
+      <a class="mobile-menu__link" href="#mini-projects" data-i18n="navMiniProjects">Мини-проекты</a>
+      <a class="mobile-menu__link" href="#notes" data-i18n="navNotes">Заметки</a>
       <a class="mobile-menu__link" href="#about" data-i18n="navAbout">Обо мне</a>
       <a class="mobile-menu__link" href="#skills" data-i18n="navSkills">Навыки</a>
+      <a class="mobile-menu__link" href="cv.html" data-i18n="navCv">Резюме</a>
       <a class="mobile-menu__link" href="#links" data-i18n="navLinks">Ссылки</a>
       <a class="mobile-menu__link" href="#github" data-i18n="navGithub">GitHub</a>
       <a class="mobile-menu__link" href="#contact" data-i18n="navContactForm">Контакт</a>
@@ -150,7 +157,7 @@
                 <h3 class="project-name">Panorama</h3>
                 <p class="project-role" data-i18n="rolePanoramaBadge">Разработчик</p>
               </div>
-              <span class="status status--dev" data-i18n="statusDev">В разработке</span>
+              <span class="status status--live" data-i18n="statusLive">Demo live</span>
             </div>
             <p class="project-desc" data-i18n="panoramaDesc">Командный проект МГИМО</p>
             <ul class="project-tags"><li>JavaScript</li><li>Three.js</li><li>Panolens</li></ul>
@@ -219,7 +226,8 @@
         <div class="now-playing card glass" id="now-playing" hidden>
           <span class="now-playing__label" data-i18n="nowPlayingLabel">Сейчас слушаю</span>
           <p class="now-playing__track"><span id="now-playing-title"></span> — <span id="now-playing-artist"></span></p>
-          <a class="now-playing__link" id="now-playing-link" href="#" target="_blank" rel="noopener noreferrer" data-i18n="nowPlayingOpen">Открыть ↗</a>
+          <div class="now-playing__embed" id="now-playing-embed" hidden></div>
+          <a class="now-playing__link" id="now-playing-link" href="#" target="_blank" rel="noopener noreferrer" data-i18n="nowPlayingOpen">Открыть в Spotify ↗</a>
         </div>
       </div>
     </section>
@@ -295,21 +303,42 @@
     <section class="section reveal" id="notes">
       <h2 class="section-title section-title--lg" data-i18n="notesTitle">Заметки</h2>
       <div class="notes-grid">
-        <article class="note-card glass reveal">
+        <a class="note-card glass reveal" href="notes/deploy.html">
           <time class="note-card__date" datetime="2026-05">May 2026</time>
           <h3 class="note-card__title" data-i18n="note1Title">Как я деплою портфолио</h3>
           <p class="note-card__desc" data-i18n="note1Desc">GitHub Pages + PowerShell-скрипт: генерация og-image, копирование в _deploy и push.</p>
-        </article>
-        <article class="note-card glass reveal reveal-delay-1">
+          <span class="note-card__read" data-i18n="noteReadMore">Читать →</span>
+        </a>
+        <a class="note-card glass reveal reveal-delay-1" href="notes/panorama-compress.html">
           <time class="note-card__date" datetime="2026-04">Apr 2026</time>
           <h3 class="note-card__title" data-i18n="note2Title">Сжатие панорам Panorama</h3>
           <p class="note-card__desc" data-i18n="note2Desc">510 MB → ~10 MB через Python + Pillow — без потери UX на GitHub Pages.</p>
-        </article>
-        <article class="note-card glass reveal reveal-delay-2">
+          <span class="note-card__read" data-i18n="noteReadMore">Читать →</span>
+        </a>
+        <a class="note-card glass reveal reveal-delay-2" href="notes/vogue-ai.html">
           <time class="note-card__date" datetime="2026-03">Mar 2026</time>
           <h3 class="note-card__title" data-i18n="note3Title">AI-поиск в Vogue Way</h3>
           <p class="note-card__desc" data-i18n="note3Desc">CLIP-эмбеддинги для поиска товаров по фото — lazy load модели при первом запросе.</p>
-        </article>
+          <span class="note-card__read" data-i18n="noteReadMore">Читать →</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section reveal" id="reviews">
+      <h2 class="section-title section-title--lg" data-i18n="reviewsTitle">О проектах</h2>
+      <div class="reviews-grid">
+        <blockquote class="review-card glass reveal">
+          <p class="review-card__text" data-i18n="review1Text">Интегрировал Panolens viewer с 17 сценами, сжал панорамы с 510 MB до ~10 MB и собрал лендинг команды для учебного проекта МГИМО.</p>
+          <footer class="review-card__meta">
+            <cite class="review-card__role" data-i18n="review1Role">Panorama · MGIMO</cite>
+          </footer>
+        </blockquote>
+        <blockquote class="review-card glass reveal reveal-delay-1">
+          <p class="review-card__text" data-i18n="review2Text">Full-stack маркетплейс: FastAPI + PostgreSQL, Next.js фронт, корзина, checkout и AI-поиск по фото через CLIP-эмбеддинги.</p>
+          <footer class="review-card__meta">
+            <cite class="review-card__role" data-i18n="review2Role">Vogue Way · диплом</cite>
+          </footer>
+        </blockquote>
       </div>
     </section>
 
@@ -358,7 +387,13 @@
           <div class="skeleton-line skeleton-line--short"></div>
         </div>
       </div>
-      <div class="github-chart card glass">
+      <a
+        class="github-chart card glass github-chart__link"
+        id="github-streak-link"
+        href="https://github.com/stressedk1d"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub profile">
         <img
           class="github-chart__img"
           id="github-streak"
@@ -368,7 +403,7 @@
           height="195"
           loading="lazy"
           decoding="async">
-      </div>
+      </a>
     </section>
 
     <section class="section reveal" id="contact">
@@ -401,7 +436,7 @@
   <nav class="bottom-nav" aria-label="Быстрая навигация">
     <a class="bottom-nav__link" href="#top" data-i18n="navHome">Главная</a>
     <a class="bottom-nav__link" href="#projects" data-i18n="navProjects">Проекты</a>
-    <a class="bottom-nav__link" href="#contact" data-i18n="navContactForm">Контакт</a>
+    <a class="bottom-nav__link" href="cv.html" data-i18n="navCv">Резюме</a>
   </nav>
 
   <div class="fab-group">

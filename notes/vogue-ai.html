@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI-поиск в Vogue Way" data-i18n-content="note3Desc">
+  <meta property="og:title" content="AI-поиск Vogue Way — 0bsession" data-i18n-content="note3Title">
+  <meta property="og:description" content="CLIP embeddings для поиска по фото" data-i18n-content="note3Desc">
+  <meta property="og:url" content="https://stressedk1d.github.io/notes/vogue-ai.html">
+  <meta property="og:image" content="https://stressedk1d.github.io/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://stressedk1d.github.io/og-image.png">
+  <link rel="canonical" href="https://stressedk1d.github.io/notes/vogue-ai.html">
+  <link rel="alternate" hreflang="ru" href="https://stressedk1d.github.io/notes/vogue-ai.html?lang=ru">
+  <link rel="alternate" hreflang="en" href="https://stressedk1d.github.io/notes/vogue-ai.html?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://stressedk1d.github.io/notes/vogue-ai.html">
+  <title data-i18n="note3Title">AI-поиск Vogue Way — 0bsession</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="note.css">
+</head>
+<body class="project-page page-load">
+  <main class="page page--project page--note">
+    <a class="back-link" href="../index.html#notes" data-i18n="backNotes">← К заметкам</a>
+    <article class="note-article card glass reveal is-visible">
+      <time class="note-article__date" datetime="2026-03">Mar 2026</time>
+      <h1 class="note-article__title" data-i18n="note3Title">AI-поиск в Vogue Way</h1>
+      <p data-i18n="note3p1">Vogue Way — дипломный маркетплейс модной одежды. Одна из фишек — поиск товара по фото: загружаешь картинку, получаешь похожие позиции из каталога.</p>
+      <p data-i18n="note3p2">Backend на FastAPI, модель CLIP. При первом запросе к <code>/ai/search</code> модель подгружается lazy — это экономит память при старте API.</p>
+      <ol>
+        <li data-i18n="note3li1">Пользователь загружает фото</li>
+        <li data-i18n="note3li2">CLIP строит эмбеддинг изображения</li>
+        <li data-i18n="note3li3">Cosine similarity с эмбеддингами каталога</li>
+        <li data-i18n="note3li4">Топ-N товаров в ответе API</li>
+      </ol>
+      <p data-i18n="note3p3">Первый запрос медленный (загрузка модели), дальше — быстрее. Демо: vogueway.ru</p>
+    </article>
+  </main>
+  <div class="fab-group"><button class="fab lang-toggle" type="button">EN</button></div>
+  <script src="../config.js"></script>
+  <script src="../i18n.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>
