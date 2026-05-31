@@ -2024,6 +2024,7 @@ html.js .bar__fill.is-animated {
 .github-chart__img {
   display: block;
   width: 100%;
+  max-width: 100%;
   height: auto;
   border-radius: 8px;
 }

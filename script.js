@@ -474,6 +474,8 @@ function initTheme() {
     document.documentElement.setAttribute("data-theme", next);
     localStorage.setItem("theme", next);
     syncIcon();
+    const streak = document.getElementById("github-streak");
+    if (streak) streak.src = getGitHubStreakUrl();
   });
 }
 
@@ -516,6 +518,48 @@ function initTyping() {
   };
 
   tick();
+}
+
+function getGitHubStreakUrl() {
+  const user = config.github || "stressedk1d";
+  const light = document.documentElement.getAttribute("data-theme") === "light";
+  const base = "https://streak-stats.demolab.com/";
+
+  if (light) {
+    return `${base}?user=${user}&theme=default&hide_border=false&border_radius=12`;
+  }
+
+  const params = new URLSearchParams({
+    user,
+    background: "00000000",
+    border: "7c3aed",
+    stroke: "00000000",
+    ring: "c084fc",
+    fire: "c084fc",
+    currStreakNum: "f4f4f5",
+    sideNums: "f4f4f5",
+    currStreakLabel: "c084fc",
+    sideLabels: "b4b4bc",
+    dates: "b4b4bc",
+    hide_border: "false",
+    border_radius: "12",
+  });
+
+  return `${base}?${params.toString()}`;
+}
+
+function initGitHubStreak() {
+  const img = document.getElementById("github-streak");
+  if (!img) return;
+
+  const sync = () => {
+    img.src = getGitHubStreakUrl();
+  };
+
+  sync();
+  document.querySelector(".theme-toggle")?.addEventListener("click", () => {
+    setTimeout(sync, 0);
+  });
 }
 
 function initGitHubRepos() {
@@ -741,6 +785,7 @@ initCv();
 initCvEmail();
 initContact();
 initGitHubRepos();
+initGitHubStreak();
 initNowPlaying();
 initEasterEgg();
 initTyping();
