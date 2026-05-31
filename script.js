@@ -9,7 +9,24 @@ const TYPING_ROLES = {
 };
 
 function getLang() {
+  const params = new URLSearchParams(window.location.search);
+  const fromUrl = params.get("lang");
+  if (fromUrl === "ru" || fromUrl === "en") {
+    localStorage.setItem("lang", fromUrl);
+    return fromUrl;
+  }
   return localStorage.getItem("lang") || "ru";
+}
+
+function initLangFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const fromUrl = params.get("lang");
+  if (fromUrl !== "ru" && fromUrl !== "en") return;
+  setLang(fromUrl);
+  params.delete("lang");
+  const query = params.toString();
+  const next = `${window.location.pathname}${query ? `?${query}` : ""}${window.location.hash}`;
+  window.history.replaceState({}, "", next);
 }
 
 function setLang(lang) {
@@ -77,6 +94,33 @@ function initEmail() {
       const msg = window.I18N[getLang()]?.emailCopied || "Email copied";
       showToast(msg);
     });
+  });
+}
+
+function initVCard() {
+  const btn = document.getElementById("vcard-download");
+  if (!btn) return;
+
+  btn.addEventListener("click", () => {
+    const strings = window.I18N[getLang()] || {};
+    const site = config.siteUrl || window.location.origin;
+    const lines = [
+      "BEGIN:VCARD",
+      "VERSION:3.0",
+      "FN:0bsession",
+      "TITLE:Full-stack Web Developer",
+    ];
+    if (config.email) lines.push(`EMAIL:${config.email}`);
+    if (config.telegram) lines.push(`URL:https://t.me/${config.telegram}`);
+    lines.push(`URL:${site}`, "END:VCARD");
+    const blob = new Blob([lines.join("\r\n")], { type: "text/vcard;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "0bsession.vcf";
+    link.click();
+    URL.revokeObjectURL(url);
+    showToast(strings.vcardSaved || "Contact saved");
   });
 }
 
@@ -576,17 +620,19 @@ function initCursor() {
 
 function initParticles() {
   if (!particlesCanvas || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if (window.matchMedia("(pointer: coarse)").matches) return;
 
   const ctx = particlesCanvas.getContext("2d");
   let width = 0;
   let height = 0;
   let particles = [];
-  const count = window.innerWidth < 768 ? 30 : 45;
+
+  const getCount = () => (window.innerWidth < 768 ? 18 : 40);
 
   function resize() {
     width = particlesCanvas.width = window.innerWidth;
     height = particlesCanvas.height = window.innerHeight;
-    particles = Array.from({ length: count }, () => ({
+    particles = Array.from({ length: getCount() }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
       r: Math.random() * 1.2 + 0.4,
@@ -621,8 +667,10 @@ function initParticles() {
 }
 
 setLang(getLang());
+initLangFromUrl();
 initTheme();
 initEmail();
+initVCard();
 initDemo();
 initCv();
 initCvEmail();

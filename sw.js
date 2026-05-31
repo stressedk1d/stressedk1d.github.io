@@ -1,8 +1,10 @@
-const CACHE = "0bsession-v13";
+const CACHE = "0bsession-v14";
 const STALE_ASSETS = ["/images/background.jpg"];
 const ASSETS = [
   "/",
   "/index.html",
+  "/cv.html",
+  "/offline.html",
   "/styles.css",
   "/script.js",
   "/config.js",
@@ -10,6 +12,7 @@ const ASSETS = [
   "/favicon.svg",
   "/manifest.json",
   "/og-image.png",
+  "/404.html",
   "/projects/vogue-way.html",
   "/projects/panorama.html",
 ];
@@ -37,7 +40,26 @@ self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
 
   const url = new URL(event.request.url);
-  const isAsset = /\.(js|css|html)$/.test(url.pathname) || url.pathname === "/";
+  if (url.origin !== self.location.origin) return;
+
+  if (event.request.mode === "navigate") {
+    event.respondWith(
+      fetch(event.request)
+        .then((response) => {
+          if (response.ok) {
+            const clone = response.clone();
+            caches.open(CACHE).then((cache) => cache.put(event.request, clone));
+          }
+          return response;
+        })
+        .catch(() =>
+          caches.match(event.request).then((cached) => cached || caches.match("/offline.html"))
+        )
+    );
+    return;
+  }
+
+  const isAsset = /\.(js|css|html|svg|json|png|webp|jpg)$/.test(url.pathname) || url.pathname === "/";
 
   event.respondWith(
     isAsset
@@ -53,7 +75,7 @@ self.addEventListener("fetch", (event) => {
       : caches.match(event.request).then((cached) => {
           if (cached) return cached;
           return fetch(event.request).then((response) => {
-            if (response.ok && url.origin === self.location.origin) {
+            if (response.ok) {
               const clone = response.clone();
               caches.open(CACHE).then((cache) => cache.put(event.request, clone));
             }

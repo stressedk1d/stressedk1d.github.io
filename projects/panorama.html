@@ -13,9 +13,15 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://stressedk1d.github.io/images/panorama.png">
   <link rel="canonical" href="https://stressedk1d.github.io/projects/panorama.html">
+  <link rel="alternate" hreflang="ru" href="https://stressedk1d.github.io/projects/panorama.html?lang=ru">
+  <link rel="alternate" hreflang="en" href="https://stressedk1d.github.io/projects/panorama.html?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://stressedk1d.github.io/projects/panorama.html">
   <title data-i18n="panoramaPageTitle">Panorama — 0bsession</title>
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap"></noscript>
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body class="project-page page-load">
@@ -37,8 +43,8 @@
         <span class="status status--dev" data-i18n="statusDev">В разработке</span>
         <h1 class="name neon-text">Panorama</h1>
         <p class="project-role" data-i18n="rolePanoramaBadge">Разработчик</p>
-        <p class="bio" data-i18n="panoramaPageDesc">Web-проект с панорамным просмотром</p>
-        <ul class="project-tags"><li>JavaScript</li><li>Three.js</li><li>Panolens</li></ul>
+        <p class="bio" data-i18n="panoramaPageDesc">Командный web-проект МГИМО</p>
+        <ul class="project-tags"><li>JavaScript</li><li>Three.js</li><li>Panolens</li><li>HTML</li><li>CSS</li></ul>
         <div class="project-actions">
           <a class="project-btn project-btn--neon hidden" id="panorama-demo" href="#" target="_blank" rel="noopener noreferrer" data-i18n="demo">Демо ↗</a>
           <a class="project-btn project-btn--ghost" href="https://github.com/stressedk1d/panorama" target="_blank" rel="noopener noreferrer" data-i18n="code">Код ↗</a>
@@ -55,7 +61,29 @@
       <h2 class="section-title" data-i18n="panoramaRoleTitle">Моя роль</h2>
       <div class="card glass">
         <p class="role-highlight" data-i18n="rolePanoramaBadge">Разработчик</p>
-        <p data-i18n="panoramaRoleText">Разработчик (Coder): вёрстка, frontend-логика.</p>
+        <p data-i18n="panoramaRoleText">Coder: вёрстка, frontend-логика.</p>
+      </div>
+    </section>
+
+    <section class="section reveal is-visible">
+      <h2 class="section-title" data-i18n="panoramaStackTitle">Стек</h2>
+      <ul class="stack-list card glass">
+        <li data-i18n="panoramaStackFrontend">Frontend: HTML, CSS, JavaScript</li>
+        <li data-i18n="panoramaStackViewer">Viewer: Three.js, Panolens.js</li>
+        <li data-i18n="panoramaStackAssets">Ассеты: 17 equirectangular-панорам</li>
+      </ul>
+    </section>
+
+    <section class="section reveal is-visible">
+      <h2 class="section-title" data-i18n="panoramaArchTitle">Архитектура</h2>
+      <div class="arch-diagram card glass">
+        <div class="arch-diagram__row">
+          <div class="arch-box" data-i18n="panoramaArchLanding">Landing · команда</div>
+          <span class="arch-arrow" aria-hidden="true">→</span>
+          <div class="arch-box" data-i18n="panoramaArchViewer">Panolens viewer</div>
+          <span class="arch-arrow" aria-hidden="true">→</span>
+          <div class="arch-box arch-box--accent" data-i18n="panoramaArchScenes">17 сцен · infospots</div>
+        </div>
       </div>
     </section>
 
@@ -63,11 +91,26 @@
       <h2 class="section-title" data-i18n="panoramaFeaturesTitle">Функции</h2>
       <ul class="feature-list card glass">
         <li data-i18n="panoramaFeature1">Страница команды с ролями</li>
-        <li data-i18n="panoramaFeature2">Панорамный просмотр пространства</li>
+        <li data-i18n="panoramaFeature2">17 панорамных сцен с переходами</li>
         <li data-i18n="panoramaFeature3">Panolens + Three.js viewer</li>
         <li data-i18n="panoramaFeature4">Интерактивные infospot-метки</li>
       </ul>
     </section>
+
+    <section class="section reveal is-visible">
+      <h2 class="section-title" data-i18n="panoramaTechTitle">Технические детали</h2>
+      <ul class="feature-list card glass">
+        <li data-i18n="panoramaTech1">Настройка переходов между панорамами</li>
+        <li data-i18n="panoramaTech2">Сжатие панорам для быстрой загрузки</li>
+        <li data-i18n="panoramaTech3">Адаптивная вёрстка landing и команды</li>
+      </ul>
+    </section>
+
+    <section class="section reveal is-visible">
+      <h2 class="section-title" data-i18n="panoramaResultTitle">Результат</h2>
+      <div class="card glass"><p data-i18n="panoramaResultText">Рабочий демо-тур на stressedk1d.github.io/panorama/</p></div>
+    </section>
+
     <nav class="project-nav">
       <a href="vogue-way.html" data-i18n="prevProject">← Vogue Way</a>
       <span></span>

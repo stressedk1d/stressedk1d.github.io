@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#7c3aed">
+  <title data-i18n="offlineTitle">Нет сети — 0bsession</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="offline-page">
+  <main class="error-page">
+    <div class="error-page__card card glass">
+      <p class="error-page__code" aria-hidden="true">📡</p>
+      <h1 class="error-page__title" data-i18n="offlineTitle">Нет сети</h1>
+      <p class="error-page__hint" data-i18n="offlineText">Похоже, интернет недоступен.</p>
+      <div class="error-links">
+        <button class="btn btn--neon" type="button" id="offline-retry" data-i18n="offlineRetry">Обновить</button>
+        <a class="btn btn--ghost" href="/" data-i18n="errorBack">На главную</a>
+      </div>
+    </div>
+  </main>
+  <script src="config.js"></script>
+  <script src="i18n.js"></script>
+  <script>
+    const lang = localStorage.getItem("lang") || "ru";
+    const strings = window.I18N[lang] || window.I18N.ru;
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const key = el.dataset.i18n;
+      if (strings[key]) el.textContent = strings[key];
+    });
+    const titleKey = document.querySelector("title[data-i18n]")?.dataset.i18n;
+    if (titleKey && strings[titleKey]) document.title = strings[titleKey];
+    document.getElementById("offline-retry")?.addEventListener("click", () => location.reload());
+  </script>
+</body>
+</html>

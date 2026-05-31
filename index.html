@@ -13,6 +13,9 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://stressedk1d.github.io/og-image.png">
   <link rel="canonical" href="https://stressedk1d.github.io/">
+  <link rel="alternate" hreflang="ru" href="https://stressedk1d.github.io/?lang=ru">
+  <link rel="alternate" hreflang="en" href="https://stressedk1d.github.io/?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://stressedk1d.github.io/">
   <link rel="sitemap" type="application/xml" href="/sitemap.xml">
   <title>0bsession</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -20,7 +23,8 @@
   <link rel="manifest" href="manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap"></noscript>
   <link rel="stylesheet" href="styles.css">
   <script type="application/ld+json">
   {
@@ -162,6 +166,36 @@
       </div>
     </section>
 
+    <section class="section reveal reveal-delay-2" id="mini-projects">
+      <h2 class="section-title section-title--lg" data-i18n="miniProjectsTitle">Мини-проекты</h2>
+      <div class="mini-projects">
+        <article class="mini-card glass reveal">
+          <div class="mini-card__head">
+            <h3 class="mini-card__title" data-i18n="miniTodoTitle">To-Do List</h3>
+            <span class="status status--dev" data-i18n="miniTodoBadge">Vanilla JS</span>
+          </div>
+          <p class="mini-card__desc" data-i18n="miniTodoDesc">Список задач на чистом JS.</p>
+          <a class="project-btn project-btn--ghost" href="https://stressedk1d.github.io/panorama/IGOR/ToDoList/" target="_blank" rel="noopener noreferrer" data-i18n="miniOpenDemo">Открыть ↗</a>
+        </article>
+        <article class="mini-card glass reveal reveal-delay-1">
+          <div class="mini-card__head">
+            <h3 class="mini-card__title" data-i18n="miniGuesserTitle">Угадай число</h3>
+            <span class="status status--dev" data-i18n="miniGuesserBadge">JavaScript</span>
+          </div>
+          <p class="mini-card__desc" data-i18n="miniGuesserDesc">Игра с подсказками больше/меньше.</p>
+          <a class="project-btn project-btn--ghost" href="https://stressedk1d.github.io/panorama/IGOR/guesser/" target="_blank" rel="noopener noreferrer" data-i18n="miniOpenDemo">Открыть ↗</a>
+        </article>
+        <article class="mini-card glass reveal reveal-delay-2">
+          <div class="mini-card__head">
+            <h3 class="mini-card__title" data-i18n="miniKeytrainTitle">Клавиатурный тренажёр</h3>
+            <span class="status status--dev" data-i18n="miniKeytrainBadge">JavaScript</span>
+          </div>
+          <p class="mini-card__desc" data-i18n="miniKeytrainDesc">Мини-игра на скорость нажатия клавиш.</p>
+          <a class="project-btn project-btn--ghost" href="https://stressedk1d.github.io/panorama/IGOR/keytrain/" target="_blank" rel="noopener noreferrer" data-i18n="miniOpenDemo">Открыть ↗</a>
+        </article>
+      </div>
+    </section>
+
     <section class="section reveal reveal-delay-1" id="about">
       <h2 class="section-title" data-i18n="aboutTitle">Обо мне</h2>
       <div class="card glass about-card">
@@ -261,6 +295,11 @@
           <span class="link-text"><span class="link-title" data-i18n="emailTitle">Email</span><span class="link-desc" id="email-desc" data-i18n="emailDesc">Написать на почту</span></span>
           <span class="link-arrow">→</span>
         </a>
+        <button class="link-card glass link-card--vcard" type="button" id="vcard-download" data-track="vcard">
+          <span class="link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 11V7a4 4 0 0 0-8 0v4"/><rect x="3" y="11" width="18" height="10" rx="2"/></svg></span>
+          <span class="link-text"><span class="link-title" data-i18n="vcardDownload">Сохранить контакт</span><span class="link-desc">.vcf</span></span>
+          <span class="link-arrow">↓</span>
+        </button>
       </nav>
     </section>
 

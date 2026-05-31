@@ -1889,3 +1889,80 @@ html.js .bar__fill.is-animated {
   border-color: rgba(0, 0, 0, 0.1);
 }
 
+/* ——— Mini projects ——— */
+.mini-projects {
+  display: grid;
+  gap: 0.85rem;
+}
+
+@media (min-width: 640px) {
+  .mini-projects {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .mini-projects {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.mini-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 1rem;
+  min-height: 100%;
+}
+
+.mini-card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.mini-card__title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.mini-card__desc {
+  flex: 1;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.mini-card .project-btn {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+.link-card--vcard {
+  width: 100%;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+}
+
+.link-card--vcard .link-icon {
+  background: rgba(52, 211, 153, 0.12);
+  color: #34d399;
+}
+
+.offline-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background: var(--bg);
+}
+
+.offline-page .error-page__code {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
