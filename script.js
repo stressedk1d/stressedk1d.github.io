@@ -60,21 +60,6 @@ langToggle?.addEventListener("click", () => {
   setLang(getLang() === "ru" ? "en" : "ru");
 });
 
-function initAvatar() {
-  const avatar = document.getElementById("avatar");
-  if (!avatar) return;
-
-  const fallback = avatar.src;
-  const img = new Image();
-  img.onload = () => {
-    avatar.src = "avatar.jpg";
-  };
-  img.onerror = () => {
-    avatar.src = fallback;
-  };
-  img.src = "avatar.jpg";
-}
-
 function initEmail() {
   const email = config.email;
   const link = document.getElementById("email-link");
@@ -213,7 +198,6 @@ function initParticles() {
 
 initTheme();
 setLang(getLang());
-initAvatar();
 initEmail();
 initDemo();
 initAnalytics();

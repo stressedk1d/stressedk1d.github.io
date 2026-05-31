@@ -1,10 +1,10 @@
 window.SITE_CONFIG = {
-  email: "",
+  email: "gromov-igor2006.com@yandex.ru",
   goatCounter: "",
   customDomain: "",
   projects: {
     marketplace: {
-      demoUrl: "",
+      demoUrl: "https://vogueway.ru/",
     },
   },
 };
