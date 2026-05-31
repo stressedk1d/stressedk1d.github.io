@@ -301,20 +301,6 @@ function initTilt() {
   });
 }
 
-function initSplash() {
-  const splash = document.getElementById("splash");
-  if (!splash) return;
-  if (localStorage.getItem("visited")) {
-    splash.remove();
-    return;
-  }
-  localStorage.setItem("visited", "1");
-  setTimeout(() => {
-    splash.classList.add("is-hidden");
-    setTimeout(() => splash.remove(), 500);
-  }, 1200);
-}
-
 function initAnalytics() {
   const siteCode = config.goatCounter;
   if (!siteCode) return;
