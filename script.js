@@ -551,15 +551,7 @@ function getGitHubStreakUrl() {
 function initGitHubStreak() {
   const img = document.getElementById("github-streak");
   if (!img) return;
-
-  const sync = () => {
-    img.src = getGitHubStreakUrl();
-  };
-
-  sync();
-  document.querySelector(".theme-toggle")?.addEventListener("click", () => {
-    setTimeout(sync, 0);
-  });
+  img.src = getGitHubStreakUrl();
 }
 
 function initGitHubRepos() {
