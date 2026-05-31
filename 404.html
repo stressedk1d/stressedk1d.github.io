@@ -9,15 +9,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="page-load">
+<body class="page-load error404-body">
   <canvas id="particles" aria-hidden="true"></canvas>
-  <div class="cursor-glow" aria-hidden="true"></div>
   <div class="background"></div>
   <main class="error-page">
-    <div>
+    <div class="error-page__card card glass">
       <p class="error-page__code neon-text">404</p>
-      <p data-i18n="error404">Страница не найдена</p>
-      <a class="btn btn--neon" href="index.html" data-i18n="errorBack">На главную</a>
+      <p class="error-page__title" data-i18n="error404">Страница не найдена</p>
+      <p class="error-page__hint" data-i18n="error404Hint">Похоже, эта страница не существует или была перемещена.</p>
+      <a class="btn btn--neon btn--block" href="index.html" data-i18n="errorBack">На главную</a>
       <p class="error-links-label" data-i18n="errorProjects">Или посмотрите проекты:</p>
       <div class="error-links">
         <a class="btn btn--ghost" href="projects/vogue-way.html">Vogue Way</a>

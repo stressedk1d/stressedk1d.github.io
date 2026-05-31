@@ -3,6 +3,11 @@ const cursorGlow = document.querySelector(".cursor-glow");
 const particlesCanvas = document.getElementById("particles");
 const config = window.SITE_CONFIG || {};
 
+const TYPING_ROLES = {
+  ru: ["Full-stack разработчик", "Frontend · React", "Backend · Python"],
+  en: ["Full-stack developer", "Frontend · React", "Backend · Python"],
+};
+
 function getLang() {
   return localStorage.getItem("lang") || "ru";
 }
@@ -105,13 +110,17 @@ function initNav() {
     ...document.querySelectorAll(".mobile-menu__link"),
     ...document.querySelectorAll(".bottom-nav__link"),
     ...document.querySelectorAll('.hero-cta a[href^="#"]'),
+    ...document.querySelectorAll(".fab--contact"),
   ];
 
-  const sections = [...new Set(
-    navLinks
-      .map((link) => document.querySelector(link.getAttribute("href")))
-      .filter(Boolean)
-  )];
+  const sectionIds = ["top", "projects", "about", "timeline", "skills", "learning", "links", "github", "contact"];
+  const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean);
+
+  const setActive = (hash) => {
+    document.querySelectorAll(".side-nav__link, .mobile-menu__link, .bottom-nav__link").forEach((link) => {
+      link.classList.toggle("is-active", link.getAttribute("href") === hash);
+    });
+  };
 
   navLinks.forEach((link) => {
     link.addEventListener("click", (event) => {
@@ -122,19 +131,28 @@ function initNav() {
     });
   });
 
-  const desktopLinks = [...document.querySelectorAll(".side-nav__link")];
+  if (!sections.length || !("IntersectionObserver" in window)) return;
+
+  const visible = new Map();
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const id = `#${entry.target.id}`;
-        desktopLinks.forEach((link) => {
-          link.classList.toggle("is-active", link.getAttribute("href") === id);
-        });
+        visible.set(entry.target.id, entry.intersectionRatio);
       });
+
+      let bestId = "top";
+      let bestRatio = 0;
+      visible.forEach((ratio, id) => {
+        if (ratio > bestRatio) {
+          bestRatio = ratio;
+          bestId = id;
+        }
+      });
+
+      if (bestRatio > 0) setActive(`#${bestId}`);
     },
-    { rootMargin: "-40% 0px -50% 0px", threshold: 0 }
+    { rootMargin: "-35% 0px -45% 0px", threshold: [0, 0.15, 0.35, 0.55] }
   );
 
   sections.forEach((section) => observer.observe(section));
@@ -373,6 +391,66 @@ function initContact() {
   });
 }
 
+function initTheme() {
+  const toggle = document.querySelector(".theme-toggle");
+  const saved = localStorage.getItem("theme") || "dark";
+  document.documentElement.setAttribute("data-theme", saved);
+
+  const syncIcon = () => {
+    if (!toggle) return;
+    toggle.textContent = document.documentElement.getAttribute("data-theme") === "light" ? "🌙" : "☀";
+  };
+
+  syncIcon();
+  toggle?.addEventListener("click", () => {
+    const next = document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+    syncIcon();
+  });
+}
+
+function initTyping() {
+  const el = document.getElementById("typing-text");
+  if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (el) el.textContent = TYPING_ROLES[getLang()]?.[0] || "";
+    return;
+  }
+
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+
+  const tick = () => {
+    const phrases = TYPING_ROLES[getLang()] || TYPING_ROLES.ru;
+    const current = phrases[phraseIndex % phrases.length];
+
+    if (!deleting) {
+      charIndex += 1;
+      el.textContent = current.slice(0, charIndex);
+      if (charIndex === current.length) {
+        deleting = true;
+        setTimeout(tick, 1800);
+        return;
+      }
+      setTimeout(tick, 55);
+      return;
+    }
+
+    charIndex -= 1;
+    el.textContent = current.slice(0, charIndex);
+    if (charIndex === 0) {
+      deleting = false;
+      phraseIndex += 1;
+      setTimeout(tick, 400);
+      return;
+    }
+    setTimeout(tick, 35);
+  };
+
+  tick();
+}
+
 function initGitHubRepos() {
   const container = document.getElementById("github-repos");
   if (!container) return;
@@ -516,11 +594,13 @@ function initParticles() {
 }
 
 setLang(getLang());
+initTheme();
 initEmail();
 initDemo();
 initCv();
 initContact();
 initGitHubRepos();
+initTyping();
 initNav();
 initMobileMenu();
 initReveal();

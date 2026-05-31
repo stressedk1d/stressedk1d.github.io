@@ -45,28 +45,31 @@
 
   <header class="site-header">
     <a class="site-logo" href="#top">0bsession</a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-i18n-aria="menuLabel">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="site-header__actions">
+      <button class="theme-toggle" type="button" aria-label="Toggle theme" data-i18n-aria="themeToggle">☀</button>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-i18n-aria="menuLabel">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </header>
 
   <nav class="side-nav" aria-label="Навигация">
+    <a class="side-nav__link" href="#projects" data-i18n="navProjects">Проекты</a>
     <a class="side-nav__link" href="#about" data-i18n="navAbout">Обо мне</a>
     <a class="side-nav__link" href="#skills" data-i18n="navSkills">Навыки</a>
     <a class="side-nav__link" href="#links" data-i18n="navLinks">Ссылки</a>
     <a class="side-nav__link" href="#github" data-i18n="navGithub">GitHub</a>
     <a class="side-nav__link" href="#contact" data-i18n="navContactForm">Контакт</a>
-    <a class="side-nav__link" href="#projects" data-i18n="navProjects">Проекты</a>
   </nav>
 
   <div class="mobile-menu" id="mobile-menu" hidden>
     <nav class="mobile-menu__nav">
+      <a class="mobile-menu__link" href="#projects" data-i18n="navProjects">Проекты</a>
       <a class="mobile-menu__link" href="#about" data-i18n="navAbout">Обо мне</a>
       <a class="mobile-menu__link" href="#skills" data-i18n="navSkills">Навыки</a>
       <a class="mobile-menu__link" href="#links" data-i18n="navLinks">Ссылки</a>
       <a class="mobile-menu__link" href="#github" data-i18n="navGithub">GitHub</a>
       <a class="mobile-menu__link" href="#contact" data-i18n="navContactForm">Контакт</a>
-      <a class="mobile-menu__link" href="#projects" data-i18n="navProjects">Проекты</a>
     </nav>
   </div>
 
@@ -76,6 +79,7 @@
         <img src="https://avatars.githubusercontent.com/u/181460099?v=4" alt="0bsession">
       </div>
       <h1 class="name neon-text neon-pulse">0bsession</h1>
+      <p class="hero-type" aria-live="polite"><span id="typing-text"></span><span class="typing-cursor" aria-hidden="true">|</span></p>
       <p class="bio" data-i18n="bio">Начинающий full-stack web-разработчик · открыт к предложениям</p>
       <span class="status-badge">
         <span class="status-badge__dot" aria-hidden="true"></span>
@@ -97,23 +101,81 @@
         <a class="btn btn--ghost" href="#contact" data-i18n="heroWrite">Написать мне</a>
         <a class="btn btn--ghost hidden" id="cv-download" href="#" target="_blank" rel="noopener noreferrer" data-i18n="cvDownload">Скачать CV</a>
       </div>
+    </section>
 
-      <div class="mood-block">
-        <span class="mood-block__label" data-i18n="moodLabel">mood</span>
-        <p data-i18n="quote">И больно думать, едет крыша. Я кричу, но ты не слышишь.</p>
+    <section class="section section--featured reveal reveal-delay-1" id="projects">
+      <h2 class="section-title section-title--lg" data-i18n="projectsTitle">Проекты</h2>
+      <div class="projects">
+        <article class="project-card glass reveal tilt-card project-card--featured">
+          <div class="project-thumb">
+            <button class="lightbox-trigger thumb-zoom" type="button" data-src="images/marketplace.png" data-alt="Vogue Way">
+              <div class="img-skeleton">
+                <img src="images/marketplace.png" alt="Vogue Way" loading="lazy">
+              </div>
+              <span class="thumb-overlay"><span data-i18n="zoomImage">Увеличить</span> 🔍</span>
+            </button>
+          </div>
+          <div class="project-body">
+            <div class="project-header">
+              <div>
+                <h3 class="project-name">Vogue Way</h3>
+                <p class="project-role" data-i18n="roleVogueBadge">Full-stack разработчик</p>
+              </div>
+              <span class="status status--thesis" data-i18n="statusThesis">Диплом</span>
+            </div>
+            <p class="project-desc" data-i18n="marketplaceDesc">Маркетплейс модной одежды с AI-поиском по фото</p>
+            <ul class="project-tags"><li>TypeScript</li><li>Python</li><li>Next.js</li><li>Docker</li></ul>
+            <div class="project-actions">
+              <a class="project-btn project-btn--neon" href="projects/vogue-way.html" data-i18n="details">Подробнее</a>
+              <a class="project-btn project-btn--ghost hidden" id="marketplace-demo" href="#" target="_blank" rel="noopener noreferrer" data-i18n="demo">Демо ↗</a>
+              <a class="project-btn project-btn--ghost" href="https://github.com/stressedk1d/marketplace" target="_blank" rel="noopener noreferrer" data-i18n="code">Код ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card glass reveal reveal-delay-2 tilt-card project-card--featured">
+          <div class="project-thumb">
+            <button class="lightbox-trigger thumb-zoom" type="button" data-src="images/panorama.png" data-alt="Panorama">
+              <div class="img-skeleton">
+                <img src="images/panorama.png" alt="Panorama" loading="lazy">
+              </div>
+              <span class="thumb-overlay"><span data-i18n="zoomImage">Увеличить</span> 🔍</span>
+            </button>
+          </div>
+          <div class="project-body">
+            <div class="project-header">
+              <div>
+                <h3 class="project-name">Panorama</h3>
+                <p class="project-role" data-i18n="rolePanoramaBadge">Разработчик</p>
+              </div>
+              <span class="status status--dev" data-i18n="statusDev">В разработке</span>
+            </div>
+            <p class="project-desc" data-i18n="panoramaDesc">Командный проект МГИМО</p>
+            <ul class="project-tags"><li>JavaScript</li><li>Three.js</li><li>Panolens</li></ul>
+            <div class="project-actions">
+              <a class="project-btn project-btn--neon" href="projects/panorama.html" data-i18n="details">Подробнее</a>
+              <a class="project-btn project-btn--ghost hidden" id="panorama-demo" href="#" target="_blank" rel="noopener noreferrer" data-i18n="demo">Демо ↗</a>
+              <a class="project-btn project-btn--ghost" href="https://github.com/stressedk1d/panorama" target="_blank" rel="noopener noreferrer" data-i18n="code">Код ↗</a>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section class="section reveal" id="about">
+    <section class="section reveal reveal-delay-1" id="about">
       <h2 class="section-title" data-i18n="aboutTitle">Обо мне</h2>
       <div class="card glass about-card">
         <p data-i18n="aboutText1">Я начинающий full-stack разработчик.</p>
         <p data-i18n="aboutText2">Ищу стажировку или junior-позицию.</p>
         <p data-i18n="aboutText3">Открыт к удалёнке и офису.</p>
+        <div class="mood-block mood-block--inline">
+          <span class="mood-block__label" data-i18n="moodLabel">mood</span>
+          <p data-i18n="quote">И больно думать, едет крыша. Я кричу, но ты не слышишь.</p>
+        </div>
       </div>
     </section>
 
-    <section class="section reveal" id="timeline">
+    <section class="section reveal reveal-delay-2" id="timeline">
       <h2 class="section-title" data-i18n="timelineTitle">Путь</h2>
       <ol class="timeline card glass">
         <li><span class="timeline__year">2024</span><span data-i18n="timeline1">Начал изучать web-разработку</span></li>
@@ -122,18 +184,18 @@
       </ol>
     </section>
 
-    <section class="section reveal" id="skills">
+    <section class="section reveal reveal-delay-1" id="skills">
       <h2 class="section-title" data-i18n="skillsTitle">Навыки подробнее</h2>
       <div class="skills-grid">
         <div class="card glass">
           <h3 class="skills-group__title" data-i18n="skillFrontend">Frontend</h3>
           <ul class="stack-icons" aria-label="Frontend">
-            <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/html5.svg" alt="HTML" width="24" height="24" loading="lazy"></li>
-            <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/css.svg" alt="CSS" width="24" height="24" loading="lazy"></li>
-            <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/javascript.svg" alt="JavaScript" width="24" height="24" loading="lazy"></li>
-            <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/typescript.svg" alt="TypeScript" width="24" height="24" loading="lazy"></li>
-            <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/react.svg" alt="React" width="24" height="24" loading="lazy"></li>
-            <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/nextdotjs.svg" alt="Next.js" width="24" height="24" loading="lazy"></li>
+            <li class="stack-icons__item" data-tip="HTML5"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/html5.svg" alt="HTML" title="HTML5" width="24" height="24" loading="lazy"></li>
+            <li class="stack-icons__item" data-tip="CSS3"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/css.svg" alt="CSS" title="CSS3" width="24" height="24" loading="lazy"></li>
+            <li class="stack-icons__item" data-tip="JavaScript"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/javascript.svg" alt="JavaScript" title="JavaScript" width="24" height="24" loading="lazy"></li>
+            <li class="stack-icons__item" data-tip="TypeScript"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/typescript.svg" alt="TypeScript" title="TypeScript" width="24" height="24" loading="lazy"></li>
+            <li class="stack-icons__item" data-tip="React"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/react.svg" alt="React" title="React" width="24" height="24" loading="lazy"></li>
+            <li class="stack-icons__item" data-tip="Next.js"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/nextdotjs.svg" alt="Next.js" title="Next.js" width="24" height="24" loading="lazy"></li>
           </ul>
           <ul class="skill-bars">
             <li><span>HTML / CSS</span><div class="bar-row"><div class="bar"><div class="bar__fill" data-width="90" style="--pct: 90%"></div></div><span class="bar__pct">90%</span></div></li>
@@ -145,9 +207,9 @@
         <div class="card glass">
           <h3 class="skills-group__title" data-i18n="skillBackend">Backend</h3>
           <ul class="stack-icons" aria-label="Backend">
-            <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/python.svg" alt="Python" width="24" height="24" loading="lazy"></li>
-            <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/fastapi.svg" alt="REST API" width="24" height="24" loading="lazy"></li>
-            <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/postgresql.svg" alt="PostgreSQL" width="24" height="24" loading="lazy"></li>
+            <li class="stack-icons__item" data-tip="Python"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/python.svg" alt="Python" title="Python" width="24" height="24" loading="lazy"></li>
+            <li class="stack-icons__item" data-tip="FastAPI"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/fastapi.svg" alt="REST API" title="FastAPI" width="24" height="24" loading="lazy"></li>
+            <li class="stack-icons__item" data-tip="PostgreSQL"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/postgresql.svg" alt="PostgreSQL" title="PostgreSQL" width="24" height="24" loading="lazy"></li>
           </ul>
           <ul class="skill-bars">
             <li><span>Python</span><div class="bar-row"><div class="bar"><div class="bar__fill" data-width="80" style="--pct: 80%"></div></div><span class="bar__pct">80%</span></div></li>
@@ -158,10 +220,10 @@
         <div class="card glass">
           <h3 class="skills-group__title" data-i18n="skillTools">Инструменты</h3>
           <ul class="stack-icons" aria-label="Tools">
-            <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/git.svg" alt="Git" width="24" height="24" loading="lazy"></li>
-            <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/github.svg" alt="GitHub" width="24" height="24" loading="lazy"></li>
-            <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/docker.svg" alt="Docker" width="24" height="24" loading="lazy"></li>
-            <li><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/figma.svg" alt="Figma" width="24" height="24" loading="lazy"></li>
+            <li class="stack-icons__item" data-tip="Git"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/git.svg" alt="Git" title="Git" width="24" height="24" loading="lazy"></li>
+            <li class="stack-icons__item" data-tip="GitHub"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/github.svg" alt="GitHub" title="GitHub" width="24" height="24" loading="lazy"></li>
+            <li class="stack-icons__item" data-tip="Docker"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/docker.svg" alt="Docker" title="Docker" width="24" height="24" loading="lazy"></li>
+            <li class="stack-icons__item" data-tip="Figma"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/figma.svg" alt="Figma" title="Figma" width="24" height="24" loading="lazy"></li>
           </ul>
           <ul class="skill-bars">
             <li><span>Git / GitHub</span><div class="bar-row"><div class="bar"><div class="bar__fill" data-width="85" style="--pct: 85%"></div></div><span class="bar__pct">85%</span></div></li>
@@ -205,7 +267,21 @@
     <section class="section reveal" id="github">
       <h2 class="section-title" data-i18n="githubTitle">GitHub</h2>
       <div class="github-repos card glass" id="github-repos">
-        <p class="github-repos__loading" data-i18n="githubLoading">Загрузка репозиториев…</p>
+        <div class="github-skeleton" aria-hidden="true">
+          <div class="skeleton-line skeleton-line--title"></div>
+          <div class="skeleton-line"></div>
+          <div class="skeleton-line skeleton-line--short"></div>
+        </div>
+        <div class="github-skeleton" aria-hidden="true">
+          <div class="skeleton-line skeleton-line--title"></div>
+          <div class="skeleton-line"></div>
+          <div class="skeleton-line skeleton-line--short"></div>
+        </div>
+        <div class="github-skeleton" aria-hidden="true">
+          <div class="skeleton-line skeleton-line--title"></div>
+          <div class="skeleton-line"></div>
+          <div class="skeleton-line skeleton-line--short"></div>
+        </div>
       </div>
     </section>
 
@@ -226,67 +302,8 @@
             <span data-i18n="contactMessage">Сообщение</span>
             <textarea name="message" rows="4" required></textarea>
           </label>
-          <button class="btn btn--neon" type="submit" data-i18n="contactSend">Отправить в Telegram</button>
+          <button class="btn btn--neon btn--block" type="submit" data-i18n="contactSend">Отправить в Telegram</button>
         </form>
-      </div>
-    </section>
-
-    <section class="section section--featured reveal" id="projects">
-      <h2 class="section-title section-title--lg" data-i18n="projectsTitle">Проекты</h2>
-      <div class="projects">
-        <article class="project-card glass reveal tilt-card project-card--featured">
-          <div class="project-thumb">
-            <button class="lightbox-trigger thumb-zoom" type="button" data-src="images/marketplace.png" data-alt="Vogue Way">
-              <div class="img-skeleton">
-                <img src="images/marketplace.png" alt="Vogue Way" loading="lazy">
-              </div>
-              <span class="thumb-overlay"><span data-i18n="zoomImage">Увеличить</span> 🔍</span>
-            </button>
-          </div>
-          <div class="project-body">
-            <div class="project-header">
-              <div>
-                <h3 class="project-name">Vogue Way</h3>
-                <p class="project-role" data-i18n="roleVogueBadge">Full-stack разработчик</p>
-              </div>
-              <span class="status status--thesis" data-i18n="statusThesis">Диплом</span>
-            </div>
-            <p class="project-desc" data-i18n="marketplaceDesc">Маркетплейс модной одежды с AI-поиском по фото</p>
-            <ul class="project-tags"><li>TypeScript</li><li>Python</li><li>Next.js</li><li>Docker</li></ul>
-            <div class="project-actions">
-              <a class="project-btn project-btn--neon" href="projects/vogue-way.html" data-i18n="details">Подробнее</a>
-              <a class="project-btn project-btn--ghost hidden" id="marketplace-demo" href="#" target="_blank" rel="noopener noreferrer" data-i18n="demo">Демо ↗</a>
-              <a class="project-btn project-btn--ghost" href="https://github.com/stressedk1d/marketplace" target="_blank" rel="noopener noreferrer" data-i18n="code">Код ↗</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card glass reveal tilt-card">
-          <div class="project-thumb">
-            <button class="lightbox-trigger thumb-zoom" type="button" data-src="images/panorama.png" data-alt="Panorama">
-              <div class="img-skeleton">
-                <img src="images/panorama.png" alt="Panorama" loading="lazy">
-              </div>
-              <span class="thumb-overlay"><span data-i18n="zoomImage">Увеличить</span> 🔍</span>
-            </button>
-          </div>
-          <div class="project-body">
-            <div class="project-header">
-              <div>
-                <h3 class="project-name">Panorama</h3>
-                <p class="project-role" data-i18n="rolePanoramaBadge">Разработчик</p>
-              </div>
-              <span class="status status--dev" data-i18n="statusDev">В разработке</span>
-            </div>
-            <p class="project-desc" data-i18n="panoramaDesc">Командный проект МГИМО</p>
-            <ul class="project-tags"><li>JavaScript</li><li>Three.js</li><li>Panolens</li></ul>
-            <div class="project-actions">
-              <a class="project-btn project-btn--neon" href="projects/panorama.html" data-i18n="details">Подробнее</a>
-              <a class="project-btn project-btn--ghost hidden" id="panorama-demo" href="#" target="_blank" rel="noopener noreferrer" data-i18n="demo">Демо ↗</a>
-              <a class="project-btn project-btn--ghost" href="https://github.com/stressedk1d/panorama" target="_blank" rel="noopener noreferrer" data-i18n="code">Код ↗</a>
-            </div>
-          </div>
-        </article>
       </div>
     </section>
 
@@ -298,10 +315,11 @@
   <nav class="bottom-nav" aria-label="Быстрая навигация">
     <a class="bottom-nav__link" href="#top" data-i18n="navHome">Главная</a>
     <a class="bottom-nav__link" href="#projects" data-i18n="navProjects">Проекты</a>
-    <a class="bottom-nav__link" href="https://t.me/phaqueu3" target="_blank" rel="noopener noreferrer" data-i18n="navContact">Контакт</a>
+    <a class="bottom-nav__link" href="#contact" data-i18n="navContactForm">Контакт</a>
   </nav>
 
   <div class="fab-group">
+    <a class="fab fab--contact mobile-only" href="#contact" aria-label="Contact" data-i18n-aria="navContactForm">✉</a>
     <button class="fab back-to-top hidden" type="button" aria-label="Наверх" data-i18n-aria="backToTop">↑</button>
     <button class="fab lang-toggle" type="button">EN</button>
   </div>
