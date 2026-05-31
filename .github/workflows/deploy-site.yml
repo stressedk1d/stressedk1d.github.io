@@ -15,6 +15,7 @@ on:
       - "og-image.png"
       - "images/**"
       - "icons/**"
+      - "panorama/**"
       - "404.html"
       - "projects/**"
       - ".github/workflows/deploy-site.yml"
@@ -42,7 +43,8 @@ jobs:
         run: |
           mkdir site-dist
           cp index.html styles.css script.js config.js i18n.js sw.js manifest.json favicon.svg og-image.png 404.html site-dist/
-          cp -r images icons projects site-dist/
+          cp -r images icons projects panorama site-dist/
+          touch site-dist/.nojekyll
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
