@@ -12,6 +12,8 @@
   <meta property="og:image" content="https://stressedk1d.github.io/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://stressedk1d.github.io/og-image.png">
+  <link rel="canonical" href="https://stressedk1d.github.io/">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
   <title>0bsession</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
@@ -20,6 +22,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "0bsession",
+    "url": "https://stressedk1d.github.io/",
+    "jobTitle": "Full-stack Web Developer",
+    "sameAs": [
+      "https://github.com/stressedk1d",
+      "https://t.me/phaqueu3"
+    ]
+  }
+  </script>
 </head>
 <body class="page-load">
   <a class="skip-link" href="#main" data-i18n="skipLink">Перейти к контенту</a>
@@ -39,6 +54,8 @@
     <a class="side-nav__link" href="#about" data-i18n="navAbout">Обо мне</a>
     <a class="side-nav__link" href="#skills" data-i18n="navSkills">Навыки</a>
     <a class="side-nav__link" href="#links" data-i18n="navLinks">Ссылки</a>
+    <a class="side-nav__link" href="#github" data-i18n="navGithub">GitHub</a>
+    <a class="side-nav__link" href="#contact" data-i18n="navContactForm">Контакт</a>
     <a class="side-nav__link" href="#projects" data-i18n="navProjects">Проекты</a>
   </nav>
 
@@ -47,6 +64,8 @@
       <a class="mobile-menu__link" href="#about" data-i18n="navAbout">Обо мне</a>
       <a class="mobile-menu__link" href="#skills" data-i18n="navSkills">Навыки</a>
       <a class="mobile-menu__link" href="#links" data-i18n="navLinks">Ссылки</a>
+      <a class="mobile-menu__link" href="#github" data-i18n="navGithub">GitHub</a>
+      <a class="mobile-menu__link" href="#contact" data-i18n="navContactForm">Контакт</a>
       <a class="mobile-menu__link" href="#projects" data-i18n="navProjects">Проекты</a>
     </nav>
   </div>
@@ -63,9 +82,20 @@
         <span data-i18n="statusOpen">Открыт к предложениям</span>
       </span>
 
+      <div class="looking-block card glass">
+        <p class="looking-block__title" data-i18n="lookingTitle">Что ищу</p>
+        <ul class="looking-tags">
+          <li data-i18n="looking1">Junior / стажировка</li>
+          <li data-i18n="looking2">Frontend · Backend · Full-stack</li>
+          <li data-i18n="looking3">Удалёнка или офис</li>
+          <li data-i18n="looking4">TypeScript · React · Python</li>
+        </ul>
+      </div>
+
       <div class="hero-cta">
         <a class="btn btn--neon" href="#projects" data-i18n="heroProjects">Смотреть проекты</a>
-        <a class="btn btn--ghost" href="https://t.me/phaqueu3" target="_blank" rel="noopener noreferrer" data-i18n="heroWrite">Написать мне</a>
+        <a class="btn btn--ghost" href="#contact" data-i18n="heroWrite">Написать мне</a>
+        <a class="btn btn--ghost hidden" id="cv-download" href="#" target="_blank" rel="noopener noreferrer" data-i18n="cvDownload">Скачать CV</a>
       </div>
 
       <div class="mood-block">
@@ -172,6 +202,35 @@
       </nav>
     </section>
 
+    <section class="section reveal" id="github">
+      <h2 class="section-title" data-i18n="githubTitle">GitHub</h2>
+      <div class="github-repos card glass" id="github-repos">
+        <p class="github-repos__loading" data-i18n="githubLoading">Загрузка репозиториев…</p>
+      </div>
+    </section>
+
+    <section class="section reveal" id="contact">
+      <h2 class="section-title" data-i18n="contactTitle">Написать мне</h2>
+      <div class="card glass contact-card">
+        <p class="contact-card__desc" data-i18n="contactDesc">Оставь сообщение — откроется Telegram с готовым текстом.</p>
+        <form class="contact-form" id="contact-form">
+          <label class="contact-form__field">
+            <span data-i18n="contactName">Имя</span>
+            <input type="text" name="name" required autocomplete="name">
+          </label>
+          <label class="contact-form__field">
+            <span data-i18n="contactEmail">Email (необязательно)</span>
+            <input type="email" name="email" autocomplete="email">
+          </label>
+          <label class="contact-form__field">
+            <span data-i18n="contactMessage">Сообщение</span>
+            <textarea name="message" rows="4" required></textarea>
+          </label>
+          <button class="btn btn--neon" type="submit" data-i18n="contactSend">Отправить в Telegram</button>
+        </form>
+      </div>
+    </section>
+
     <section class="section section--featured reveal" id="projects">
       <h2 class="section-title section-title--lg" data-i18n="projectsTitle">Проекты</h2>
       <div class="projects">
@@ -219,8 +278,8 @@
               </div>
               <span class="status status--dev" data-i18n="statusDev">В разработке</span>
             </div>
-            <p class="project-desc" data-i18n="panoramaDesc">Страница команды с панорамным просмотром</p>
-            <ul class="project-tags"><li>TypeScript</li><li>Web</li></ul>
+            <p class="project-desc" data-i18n="panoramaDesc">Командный проект МГИМО</p>
+            <ul class="project-tags"><li>JavaScript</li><li>Three.js</li><li>Panolens</li></ul>
             <div class="project-actions">
               <a class="project-btn project-btn--neon" href="projects/panorama.html" data-i18n="details">Подробнее</a>
               <a class="project-btn project-btn--ghost hidden" id="panorama-demo" href="#" target="_blank" rel="noopener noreferrer" data-i18n="demo">Демо ↗</a>

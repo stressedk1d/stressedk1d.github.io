@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://stressedk1d.github.io/sitemap.xml

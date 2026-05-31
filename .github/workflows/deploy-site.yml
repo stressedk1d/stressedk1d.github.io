@@ -17,6 +17,8 @@ on:
       - "icons/**"
       - "panorama/**"
       - "404.html"
+      - "robots.txt"
+      - "sitemap.xml"
       - "projects/**"
       - ".github/workflows/deploy-site.yml"
   workflow_dispatch:
@@ -42,7 +44,7 @@ jobs:
       - name: Prepare site bundle
         run: |
           mkdir site-dist
-          cp index.html styles.css script.js config.js i18n.js sw.js manifest.json favicon.svg og-image.png 404.html site-dist/
+          cp index.html styles.css script.js config.js i18n.js sw.js manifest.json favicon.svg og-image.png 404.html robots.txt sitemap.xml site-dist/
           cp -r images icons projects panorama site-dist/
           touch site-dist/.nojekyll
 

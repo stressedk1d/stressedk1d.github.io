@@ -319,6 +319,106 @@ function initTilt() {
   });
 }
 
+function initCv() {
+  const url = config.cvUrl;
+  const btn = document.getElementById("cv-download");
+  if (!url || !btn) return;
+  btn.href = url;
+  btn.classList.remove("hidden");
+  if (/\.pdf$/i.test(url)) btn.setAttribute("download", "");
+}
+
+function initContact() {
+  const form = document.getElementById("contact-form");
+  if (!form) return;
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const strings = window.I18N[getLang()] || {};
+    const data = new FormData(form);
+    const name = String(data.get("name") || "").trim();
+    const email = String(data.get("email") || "").trim();
+    const message = String(data.get("message") || "").trim();
+
+    if (!name || !message) {
+      showToast(strings.contactError || "Fill in name and message");
+      return;
+    }
+
+    if (config.formspreeId) {
+      try {
+        const res = await fetch(`https://formspree.io/f/${config.formspreeId}`, {
+          method: "POST",
+          headers: { Accept: "application/json" },
+          body: data,
+        });
+        if (!res.ok) throw new Error("formspree");
+        showToast(strings.contactSent || "Sent");
+        form.reset();
+        return;
+      } catch {
+        showToast(strings.contactError || "Error");
+        return;
+      }
+    }
+
+    const telegram = config.telegram || "phaqueu3";
+    const lines = [`Привет! Меня зовут ${name}.`];
+    if (email) lines.push(`Email: ${email}`);
+    lines.push("", message);
+    const text = encodeURIComponent(lines.join("\n"));
+    window.open(`https://t.me/${telegram}?text=${text}`, "_blank", "noopener,noreferrer");
+    showToast(strings.contactSent || "Opening Telegram…");
+    form.reset();
+  });
+}
+
+function initGitHubRepos() {
+  const container = document.getElementById("github-repos");
+  if (!container) return;
+
+  const user = config.github || "stressedk1d";
+  const strings = window.I18N[getLang()] || {};
+  const skip = new Set(["stressedk1d.github.io"]);
+
+  fetch(`https://api.github.com/users/${user}/repos?sort=updated&per_page=12`)
+    .then((res) => res.json())
+    .then((repos) => {
+      if (!Array.isArray(repos) || !repos.length) {
+        container.innerHTML = `<p class="github-repos__empty">${strings.githubEmpty || "No repos"}</p>`;
+        return;
+      }
+
+      const list = repos
+        .filter((repo) => !repo.fork && !skip.has(repo.name))
+        .slice(0, 6);
+
+      if (!list.length) {
+        container.innerHTML = `<p class="github-repos__empty">${strings.githubEmpty || "No repos"}</p>`;
+        return;
+      }
+
+      container.innerHTML = list
+        .map((repo) => {
+          const desc = repo.description || "—";
+          const lang = repo.language ? `<span class="github-repo__lang">${repo.language}</span>` : "";
+          const stars =
+            repo.stargazers_count > 0
+              ? `<span class="github-repo__stars">★ ${repo.stargazers_count}</span>`
+              : "";
+          return `<a class="github-repo" href="${repo.html_url}" target="_blank" rel="noopener noreferrer">
+            <span class="github-repo__name">${repo.name}</span>
+            <span class="github-repo__desc">${desc}</span>
+            <span class="github-repo__meta">${lang}${stars}</span>
+          </a>`;
+        })
+        .join("");
+    })
+    .catch(() => {
+      container.innerHTML = `<p class="github-repos__empty">${strings.githubEmpty || "No repos"}</p>`;
+    });
+}
+
 function initAnalytics() {
   const siteCode = config.goatCounter;
   if (!siteCode) return;
@@ -418,6 +518,9 @@ function initParticles() {
 setLang(getLang());
 initEmail();
 initDemo();
+initCv();
+initContact();
+initGitHubRepos();
 initNav();
 initMobileMenu();
 initReveal();
