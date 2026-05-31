@@ -8,6 +8,11 @@ window.SITE_CONFIG = {
   customDomain: "",
   cvUrl: "cv.html",
   formspreeId: "",
+  nowPlaying: {
+    title: "И больно думать, едет крыша",
+    artist: "0bsession mood",
+    url: "",
+  },
   projects: {
     marketplace: {
       demoUrl: "https://vogueway.ru/",

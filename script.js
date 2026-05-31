@@ -535,7 +535,12 @@ function initGitHubRepos() {
         return;
       }
 
-      const filtered = repos.filter((repo) => !repo.fork && !skip.has(repo.name));
+      const filtered = repos.filter(
+        (repo) =>
+          !repo.fork &&
+          !skip.has(repo.name) &&
+          (pinned.includes(repo.name) || repo.description || repo.stargazers_count > 0 || repo.forks_count > 0)
+      );
       const byName = new Map(filtered.map((repo) => [repo.name, repo]));
       const list = [
         ...pinned.map((name) => byName.get(name)).filter(Boolean),
@@ -555,10 +560,14 @@ function initGitHubRepos() {
             repo.stargazers_count > 0
               ? `<span class="github-repo__stars">★ ${repo.stargazers_count}</span>`
               : "";
+          const forks =
+            repo.forks_count > 0
+              ? `<span class="github-repo__forks">⑂ ${repo.forks_count}</span>`
+              : "";
           return `<a class="github-repo" href="${repo.html_url}" target="_blank" rel="noopener noreferrer">
             <span class="github-repo__name">${repo.name}</span>
             <span class="github-repo__desc">${desc}</span>
-            <span class="github-repo__meta">${lang}${stars}</span>
+            <span class="github-repo__meta">${lang}${stars}${forks}</span>
           </a>`;
         })
         .join("");
@@ -566,6 +575,62 @@ function initGitHubRepos() {
     .catch(() => {
       container.innerHTML = `<p class="github-repos__empty">${strings.githubEmpty || "No repos"}</p>`;
     });
+}
+
+function initNowPlaying() {
+  const block = document.getElementById("now-playing");
+  const track = config.nowPlaying;
+  if (!block || !track?.title) return;
+
+  block.hidden = false;
+  const titleEl = document.getElementById("now-playing-title");
+  const artistEl = document.getElementById("now-playing-artist");
+  const linkEl = document.getElementById("now-playing-link");
+
+  if (titleEl) titleEl.textContent = track.title;
+  if (artistEl) artistEl.textContent = track.artist || "";
+
+  if (linkEl) {
+    if (track.url) {
+      linkEl.href = track.url;
+    } else {
+      linkEl.hidden = true;
+    }
+  }
+}
+
+function initEasterEgg() {
+  const art = [
+    "font-family:monospace",
+    "font-size:11px",
+    "line-height:1.4",
+    "color:#c084fc",
+    "background:#050508",
+    "padding:8px 12px",
+    "border-radius:8px",
+  ].join(";");
+  console.log("%c0bsession%c\nПривет из консоли 👾\nKonami code → сюрприз", art, "font-size:14px;font-weight:bold;color:#c084fc");
+
+  const sequence = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
+  let index = 0;
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === sequence[index]) {
+      index += 1;
+      if (index === sequence.length) {
+        index = 0;
+        document.documentElement.style.setProperty("--accent-light", "#22d3ee");
+        document.documentElement.style.setProperty("--accent", "#0891b2");
+        showToast(getLang() === "ru" ? "Neon mode activated ⚡" : "Neon mode activated ⚡");
+        setTimeout(() => {
+          document.documentElement.style.removeProperty("--accent-light");
+          document.documentElement.style.removeProperty("--accent");
+        }, 4000);
+      }
+      return;
+    }
+    index = event.key === sequence[0] ? 1 : 0;
+  });
 }
 
 function initAnalytics() {
@@ -676,6 +741,8 @@ initCv();
 initCvEmail();
 initContact();
 initGitHubRepos();
+initNowPlaying();
+initEasterEgg();
 initTyping();
 initNav();
 initMobileMenu();

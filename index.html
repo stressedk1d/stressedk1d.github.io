@@ -21,10 +21,8 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <link rel="manifest" href="manifest.json">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap"></noscript>
+  <link rel="preload" href="fonts/fonts.css" as="style">
+  <link rel="stylesheet" href="fonts/fonts.css">
   <link rel="stylesheet" href="styles.css">
   <script type="application/ld+json">
   {
@@ -196,6 +194,15 @@
           <p class="mini-card__desc" data-i18n="miniKeytrainDesc">Мини-игра на скорость нажатия клавиш.</p>
           <a class="project-btn project-btn--neon mini-card__btn" href="https://stressedk1d.github.io/panorama/IGOR/keytrain/" target="_blank" rel="noopener noreferrer" data-i18n="miniOpenDemo">Открыть ↗</a>
         </article>
+        <article class="mini-card glass reveal reveal-delay-3">
+          <div class="mini-card__top">
+            <div class="mini-card__icon" aria-hidden="true">📝</div>
+            <span class="status status--mini" data-i18n="miniQuizBadge">HTML · CSS</span>
+          </div>
+          <h3 class="mini-card__title" data-i18n="miniQuizTitle">Тест по информатике</h3>
+          <p class="mini-card__desc" data-i18n="miniQuizDesc">10 задач: таблицы истинности, логика, варианты ответов.</p>
+          <a class="project-btn project-btn--neon mini-card__btn" href="https://stressedk1d.github.io/panorama/IGOR/test/" target="_blank" rel="noopener noreferrer" data-i18n="miniOpenDemo">Открыть ↗</a>
+        </article>
       </div>
     </section>
 
@@ -208,6 +215,11 @@
         <div class="mood-block mood-block--inline">
           <span class="mood-block__label" data-i18n="moodLabel">mood</span>
           <p data-i18n="quote">И больно думать, едет крыша. Я кричу, но ты не слышишь.</p>
+        </div>
+        <div class="now-playing card glass" id="now-playing" hidden>
+          <span class="now-playing__label" data-i18n="nowPlayingLabel">Сейчас слушаю</span>
+          <p class="now-playing__track"><span id="now-playing-title"></span> — <span id="now-playing-artist"></span></p>
+          <a class="now-playing__link" id="now-playing-link" href="#" target="_blank" rel="noopener noreferrer" data-i18n="nowPlayingOpen">Открыть ↗</a>
         </div>
       </div>
     </section>
@@ -280,6 +292,27 @@
       </ul>
     </section>
 
+    <section class="section reveal" id="notes">
+      <h2 class="section-title section-title--lg" data-i18n="notesTitle">Заметки</h2>
+      <div class="notes-grid">
+        <article class="note-card glass reveal">
+          <time class="note-card__date" datetime="2026-05">May 2026</time>
+          <h3 class="note-card__title" data-i18n="note1Title">Как я деплою портфолио</h3>
+          <p class="note-card__desc" data-i18n="note1Desc">GitHub Pages + PowerShell-скрипт: генерация og-image, копирование в _deploy и push.</p>
+        </article>
+        <article class="note-card glass reveal reveal-delay-1">
+          <time class="note-card__date" datetime="2026-04">Apr 2026</time>
+          <h3 class="note-card__title" data-i18n="note2Title">Сжатие панорам Panorama</h3>
+          <p class="note-card__desc" data-i18n="note2Desc">510 MB → ~10 MB через Python + Pillow — без потери UX на GitHub Pages.</p>
+        </article>
+        <article class="note-card glass reveal reveal-delay-2">
+          <time class="note-card__date" datetime="2026-03">Mar 2026</time>
+          <h3 class="note-card__title" data-i18n="note3Title">AI-поиск в Vogue Way</h3>
+          <p class="note-card__desc" data-i18n="note3Desc">CLIP-эмбеддинги для поиска товаров по фото — lazy load модели при первом запросе.</p>
+        </article>
+      </div>
+    </section>
+
     <section class="section reveal" id="links">
       <h2 class="section-title" data-i18n="linksTitle">Ссылки</h2>
       <nav class="links">
@@ -324,6 +357,16 @@
           <div class="skeleton-line"></div>
           <div class="skeleton-line skeleton-line--short"></div>
         </div>
+      </div>
+      <div class="github-chart card glass">
+        <img
+          class="github-chart__img"
+          src="https://ghchart.rshah.org/7c3aed/stressedk1d"
+          alt="GitHub contributions"
+          width="800"
+          height="120"
+          loading="lazy"
+          decoding="async">
       </div>
     </section>
 
@@ -373,8 +416,8 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="config.js"></script>
-  <script src="i18n.js"></script>
-  <script src="script.js"></script>
+  <script src="config.js" defer></script>
+  <script src="i18n.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

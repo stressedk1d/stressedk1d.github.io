@@ -1,10 +1,16 @@
-const CACHE = "0bsession-v17";
+const CACHE = "0bsession-v18";
 const STALE_ASSETS = ["/images/background.jpg"];
 const ASSETS = [
   "/",
   "/index.html",
   "/cv.html",
   "/offline.html",
+  "/fonts/fonts.css",
+  "/fonts/inter-400.woff2",
+  "/fonts/inter-600.woff2",
+  "/fonts/inter-700.woff2",
+  "/fonts/space-grotesk-600.woff2",
+  "/fonts/space-grotesk-700.woff2",
   "/styles.css",
   "/script.js",
   "/config.js",
@@ -59,7 +65,7 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  const isAsset = /\.(js|css|html|svg|json|png|webp|jpg)$/.test(url.pathname) || url.pathname === "/";
+  const isAsset = /\.(js|css|html|svg|json|png|webp|jpg|woff2)$/.test(url.pathname) || url.pathname === "/";
 
   event.respondWith(
     isAsset
