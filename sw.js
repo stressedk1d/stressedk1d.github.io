@@ -1,4 +1,4 @@
-const CACHE = "0bsession-v2";
+const CACHE = "0bsession-v3";
 const ASSETS = [
   "/",
   "/index.html",
@@ -30,19 +30,29 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
 
-  event.respondWith(
-    caches.match(event.request).then((cached) => {
-      const network = fetch(event.request)
-        .then((response) => {
-          if (response.ok && event.request.url.startsWith(self.location.origin)) {
-            const clone = response.clone();
-            caches.open(CACHE).then((cache) => cache.put(event.request, clone));
-          }
-          return response;
-        })
-        .catch(() => cached);
+  const url = new URL(event.request.url);
+  const isAsset = /\.(js|css|html)$/.test(url.pathname) || url.pathname === "/";
 
-      return cached || network;
-    })
+  event.respondWith(
+    isAsset
+      ? fetch(event.request)
+          .then((response) => {
+            if (response.ok) {
+              const clone = response.clone();
+              caches.open(CACHE).then((cache) => cache.put(event.request, clone));
+            }
+            return response;
+          })
+          .catch(() => caches.match(event.request))
+      : caches.match(event.request).then((cached) => {
+          if (cached) return cached;
+          return fetch(event.request).then((response) => {
+            if (response.ok && url.origin === self.location.origin) {
+              const clone = response.clone();
+              caches.open(CACHE).then((cache) => cache.put(event.request, clone));
+            }
+            return response;
+          });
+        })
   );
 });

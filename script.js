@@ -171,34 +171,38 @@ function initReveal() {
 }
 
 function initSkillBars() {
+  const section = document.getElementById("skills");
   const fills = document.querySelectorAll(".bar__fill");
   if (!fills.length) return;
 
-  const animate = (fill) => {
-    if (fill.classList.contains("is-animated")) return;
-    fill.style.setProperty("--w", `${fill.dataset.width}%`);
-    fill.classList.add("is-animated");
+  const animateAll = () => {
+    fills.forEach((fill) => {
+      if (fill.classList.contains("is-animated")) return;
+      const pct = fill.dataset.width;
+      if (!pct) return;
+      fill.style.width = "0";
+      requestAnimationFrame(() => {
+        fill.style.width = `${pct}%`;
+        fill.classList.add("is-animated");
+      });
+    });
   };
+
+  if (!section || !("IntersectionObserver" in window)) {
+    animateAll();
+    return;
+  }
 
   const observer = new IntersectionObserver(
     (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        animate(entry.target);
-        observer.unobserve(entry.target);
-      });
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      animateAll();
+      observer.disconnect();
     },
-    { threshold: 0.1 }
+    { threshold: 0.15 }
   );
 
-  fills.forEach((fill) => {
-    const rect = fill.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
-      animate(fill);
-    } else {
-      observer.observe(fill);
-    }
-  });
+  observer.observe(section);
 }
 
 function initImages() {
