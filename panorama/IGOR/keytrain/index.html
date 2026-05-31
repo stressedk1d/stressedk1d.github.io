@@ -1,21 +1,55 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Клавиатурный тренажер. Разработчик: Громов Игорь&copy;</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#7c3aed">
+  <title>Клавиатурный тренажёр — 0bsession</title>
+  <link rel="stylesheet" href="../mini-app.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1 id="headline">Клавиатурный тренажер</h1>
-    <div class="game-container">
-        <div class="falling-key" id="fallingKey"></div>
-        <div class="score">Очки: <span id="score">0</span></div>
-        <div class="timer">Осталось времени: <span id="timer">5</span> сек</div>
-        <div class="number">Номер клавиши: <span id="number"></span></div>
-        <div id="unused" class="unused"></div>
+  <main class="mini-app mini-app--wide">
+    <a class="mini-app__back" href="https://stressedk1d.github.io/#mini-projects">← Портфолио</a>
+
+    <header class="mini-app__header">
+      <div class="mini-app__icon" aria-hidden="true">⌨</div>
+      <h1 class="mini-app__title">Клавиатурный тренажёр</h1>
+      <p class="mini-app__subtitle">Нажимай нужную клавишу, пока она не упала</p>
+    </header>
+
+    <div class="mini-app__card keytrain-card">
+      <div class="keytrain-hud">
+        <div class="keytrain-stat">
+          <span class="keytrain-stat__label">Очки</span>
+          <span class="keytrain-stat__value" id="score">0</span>
+        </div>
+        <div class="keytrain-stat">
+          <span class="keytrain-stat__label">Время</span>
+          <span class="keytrain-stat__value"><span id="timer">5</span> сек</span>
+        </div>
+        <div class="keytrain-stat">
+          <span class="keytrain-stat__label">Клавиша</span>
+          <span class="keytrain-stat__value keytrain-stat__value--key" id="number">—</span>
+        </div>
+      </div>
+
+      <div class="keytrain-arena" id="arena">
+        <div class="keytrain-target" id="fallingKey" aria-hidden="true">?</div>
+        <p class="keytrain-hint" id="key-hint">Нажми Start, затем клавишу на клавиатуре</p>
+      </div>
+
+      <p class="keytrain-keys" id="unused">Клавиши: A, S, D, F, G</p>
+
+      <div class="status-msg status-msg--info" id="game-status" hidden role="status"></div>
+
+      <div class="keytrain-actions">
+        <button class="btn btn--primary btn--block" type="button" id="startGame">Start</button>
+      </div>
     </div>
-    <button id="startGame" type="button" onclick="startGame()">Start</button>
-    <script src="script.js"></script>
+
+    <p class="mini-app__footer">0bsession · JavaScript</p>
+  </main>
+  <script src="script.js"></script>
 </body>
 </html>

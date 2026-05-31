@@ -1,65 +1,122 @@
-body {
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: LightCyan;
+.mini-app--wide {
+  width: min(100% - 2rem, 480px);
 }
 
-
-.game-container {
-    position: relative;
-    width: 400px;
-    height: 500px;
-    border: 5px black solid;
-    overflow: visible;
+.keytrain-card {
+  display: grid;
+  gap: 1rem;
 }
 
-
-.falling-key {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    background-color: red;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
+.keytrain-hud {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
 }
 
-
-.score, .timer, .number, .unused {
-    position: absolute;
-    top: 10px;
-    color: black;
-    font-size: 30px;
+.keytrain-stat {
+  padding: 0.6rem 0.5rem;
+  text-align: center;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
+.keytrain-stat__label {
+  display: block;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 0.15rem;
+}
 
-.timer {
-    top: 55px;
-}
-.number{
-    top:100px;
+.keytrain-stat__value {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--accent-light);
 }
 
-.unused {
-    top: 145px;
+.keytrain-stat__value--key {
+  font-size: 1.35rem;
+  color: var(--accent-cyan);
 }
-#headline {
-    font-size: 2.5em;
-    margin-top: 20px;
+
+.keytrain-arena {
+  position: relative;
+  height: 280px;
+  border-radius: 12px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(124, 58, 237, 0.08) 0%, rgba(5, 5, 8, 0.6) 100%),
+    rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(192, 132, 252, 0.18);
 }
-#startGame {
-    background-color: rgb(132, 0, 255);
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 25px;
-    margin: 10px;
-    cursor: pointer;
+
+.keytrain-arena.is-active {
+  border-color: rgba(192, 132, 252, 0.35);
+  box-shadow: inset 0 0 40px rgba(124, 58, 237, 0.12);
+}
+
+.keytrain-target {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 3rem;
+  height: 3rem;
+  margin-left: -1.5rem;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), #9333ea);
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.45);
+  transition: background 0.2s;
+  z-index: 2;
+}
+
+.keytrain-target.is-hit {
+  background: linear-gradient(135deg, var(--success), #059669);
+  box-shadow: 0 8px 24px rgba(52, 211, 153, 0.4);
+}
+
+.keytrain-target.is-miss {
+  background: linear-gradient(135deg, var(--danger), #dc2626);
+}
+
+.keytrain-hint {
+  position: absolute;
+  inset: auto 0 1rem;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.keytrain-keys {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.keytrain-actions {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.keytrain-arena.is-over .keytrain-target {
+  opacity: 0.35;
+}
+
+@media (max-width: 380px) {
+  .keytrain-hud {
+    grid-template-columns: 1fr;
+  }
+
+  .keytrain-arena {
+    height: 240px;
+  }
 }
