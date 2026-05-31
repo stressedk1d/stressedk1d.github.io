@@ -150,6 +150,8 @@ function initMobileMenu() {
 }
 
 function initReveal() {
+  document.documentElement.classList.add("js");
+
   const items = document.querySelectorAll(".reveal");
   if (!items.length) return;
 
@@ -422,7 +424,6 @@ initPageTransition();
 initScrollProgress();
 initLightbox();
 initTilt();
-initSplash();
 initAnalytics();
 initPWA();
 initCursor();
